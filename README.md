@@ -17,4 +17,4 @@ Amazon Web Services Query API が提供しているものはほぼ全て対応�
 * SimpleDB
 * SNS
 * SQS
-* Beanstalk (対応予定)
+* Beanstalk
