@@ -4,11 +4,12 @@ ActionScript API for AWS (Amazon Web Services)
 ActionScript からカンタンにAWSへアクセスするためのAPI群です。
 
 とりあえずswcが必要な方はこちらへ
+* [cmawslib.swc](https://github.com/satoshi7/ActionScript-API-for-AWS-Amazon-Web-Services-/blob/master/bin/cmawslib.swc)
 
 操作できるAPI
 -------
 
-Amazon Web Services Query API が提供しているものはほぼ全て対応しています。
+Amazon Web Services Query API が提供しているものはほぼ全ての操作に対応しています。
 
 * EC2 - Amazon Elastic Compute Cloud
 * EMR - Amazon Elastic MapReduce
@@ -22,9 +23,9 @@ Amazon Web Services Query API が提供しているものはほぼ全て対応�
 
 使い方
 -------
-本ソースコードは Adobe Flex Library Project として作っています。
-Adobe Flash Builder などでプロジェクトのインポートを行い、
-アプリケーション側のライブラリ設定から追加をしてご利用ください。 
+本コードは Adobe Flex Library Project で作っています。
+ご使用の際には Adobe Flash Builder などでプロジェクトのインポートを行い、
+アプリケーション側の設定画面からライブラリ追加をしてご利用ください。 
 
 開発の仕方
 -------
@@ -103,10 +104,10 @@ AWS Elastic Beanstalk
 
 注意
 -------
-本ライブラリを使うには、AWSとの契約と発行される Access Key ID と Secret Access Key が必要です。
+本ライブラリを使うには、AWSと契約を行って頂き、発行される Access Key ID と Secret Access Key を使用します。
 事前にご準備ください。
 
-コントリビューター
+コントリビュータ
 -------
 
 * [@sato_shi](http://twitter.com/sato_shi/) - Classmethod,Inc. [http://classmethod.jp/](http://classmethod.jp/)]
