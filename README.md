@@ -10,14 +10,14 @@ ActionScript からカンタンにAWSへアクセスするためのAPI群です�
 
 Amazon Web Services Query API が提供しているものはほぼ全て対応しています。
 
-* EC2
-* EMR
-* IAM
-* RDS
-* SimpleDB
-* SNS
-* SQS
-* Beanstalk
+* EC2 - Amazon Elastic Compute Cloud
+* EMR - Amazon Elastic MapReduce
+* RDS - Amazon Relational Database Service
+* SDB - Amazon SimpleDB
+* SNS - Amazon Simple Notification Service
+* SQS - Amazon Simple Queue Service
+* IAM - AWS Identity and Access Management
+* EBT - AWS Elastic Beanstalk 
 
 使い方
 -------
@@ -28,4 +28,4 @@ Adobe Flash Builder などでプロジェクトのインポートを行い、
 コントリビューター
 -------
 
-* [@sato_shi](http://twitter.com/sato_shi/) - Classmethod,Inc.　( [http://classmethod.jp/] )
+* [@sato_shi](http://twitter.com/sato_shi/) - Classmethod,Inc.　( [http://classmethod.jp/(http://classmethod.jp/)] )
