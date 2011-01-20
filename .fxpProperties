@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fxpProperties abbreviated="false" authoringTool="Flex Builder" parentProject="875b7769-55b5-4786-a9d1-d09431cd1906" projectUUID="d4b76ebd-485a-4b61-b57e-d0775b3787fe" sdkVersion="4.1.0" uuid="ab775ded-5c75-4889-8ecd-f2fb2fc183c3" version="4">
+  <projects/>
+  <src/>
+  <swc>
+    <linked location="sdkPlaceHolder" path="sdkPlaceHolder" position="0" uuid="ab775ded-5c75-4889-8ecd-f2fb2fc183c3"/>
+    <linked location="C:/Users/yokota.satoshi.CM/Adobe Flash Builder 4/cmawslib/libs" path="/libs" position="1" uuid="ab775ded-5c75-4889-8ecd-f2fb2fc183c3"/>
+    <linked location="${FLEXUNIT_LIB_LOCATION}/version4libs/Common/" path="${FLEXUNIT_LIB_LOCATION}/version4libs/Common/" position="2" uuid="ab775ded-5c75-4889-8ecd-f2fb2fc183c3"/>
+    <linked location="${FLEXUNIT_LIB_LOCATION}/version4libs/FlexProject/" path="${FLEXUNIT_LIB_LOCATION}/version4libs/FlexProject/" position="3" uuid="ab775ded-5c75-4889-8ecd-f2fb2fc183c3"/>
+    <linked location="${FLEXUNIT_LOCALE_LOCATION}/version4locale/" path="${FLEXUNIT_LOCALE_LOCATION}/version4locale/" position="4" uuid="ab775ded-5c75-4889-8ecd-f2fb2fc183c3"/>
+  </swc>
+  <misc/>
+  <theme/>
+</fxpProperties>
