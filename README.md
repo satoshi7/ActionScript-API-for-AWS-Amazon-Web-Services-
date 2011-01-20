@@ -28,4 +28,4 @@ Adobe Flash Builder などでプロジェクトのインポートを行い、
 コントリビューター
 -------
 
-* @sato_shi - Classmethod,Inc.　( http://classmethod.jp/ )
+* [@sato_shi](http://twitter.com/sato_shi/) - Classmethod,Inc.　( [http://classmethod.jp/] )
