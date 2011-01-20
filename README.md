@@ -13,9 +13,10 @@ Amazon Web Services Query API が提供しているものはほぼ全て対応�
 * EC2 - Amazon Elastic Compute Cloud
 * EMR - Amazon Elastic MapReduce
 * RDS - Amazon Relational Database Service
-* SDB - Amazon SimpleDB
 * SNS - Amazon Simple Notification Service
+* SDB - Amazon SimpleDB
 * SQS - Amazon Simple Queue Service
+* ACW - Amazon CloudWatch
 * IAM - AWS Identity and Access Management
 * EBT - AWS Elastic Beanstalk 
 
@@ -24,6 +25,68 @@ Amazon Web Services Query API が提供しているものはほぼ全て対応�
 本ソースコードは Adobe Flex Library Project として作っています。
 Adobe Flash Builder などでプロジェクトのインポートを行い、
 アプリケーション側のライブラリ設定から追加をしてご利用ください。 
+
+開発の仕方
+-------
+以下のように短いコードを書いて頂ければカンタンにAWSを操作できます。
+Amazon Elastic Compute Cloud
+	var ec2:EC2 = new EC2();
+	ec2.setAWSCredentials(AWSKey.key,AWSKey.sec);
+	ec2.addEventListener(AWSEvent.RESULT,awsHandler);
+	ec2.executeRequest(EC2.DESCRIVE_REGIONS);
+
+Amazon Elastic MapReduce
+	var emr:EMR = new EMR();
+	emr.setAWSCredentials(AWSKey.key,AWSKey.sec);
+	emr.addEventListener(AWSEvent.RESULT,awsHandler);
+	emr.executeRequest(EMR.DESCRIBE_JOB_FLOWS);
+
+Amazon Relational Database Service
+	var rds:RDS = new RDS();
+	rds.setAWSCredentials(AWSKey.key,AWSKey.sec);
+	rds.addEventListener(AWSEvent.RESULT,awsHandler);
+	rds.executeRequest(RDS.DESCRIBE_DB_INSTANCES);
+
+Amazon Simple Notification Service
+	var sns:SNS = new SNS();
+	sns.setAWSCredentials(AWSKey.key,AWSKey.sec);
+	sns.addEventListener(AWSEvent.RESULT,awsHandler);
+	sns.executeRequest(SNS.LIST_TOPICS);
+					
+Amazon SimpleDB
+	var sdb:SDB = new SDB();
+	sdb.setAWSCredentials(AWSKey.key,AWSKey.sec);
+	sdb.addEventListener(AWSEvent.RESULT,awsHandler);
+	sdb.executeRequest(SDB.LIST_DOMAINS);
+
+Amazon Simple Queue Service
+	var sqs:SQS = new SQS();
+	sqs.setAWSCredentials(AWSKey.key,AWSKey.sec);
+	sqs.addEventListener(AWSEvent.RESULT,awsHandler);
+	sqs.executeRequest(SQS.LIST_QUEUES);
+
+Amazon CloudWatch
+	var acw:ACW = new ACW();
+	acw.setAWSCredentials(AWSKey.key,AWSKey.sec);
+	acw.addEventListener(AWSEvent.RESULT,awsHandler);
+	acw.executeRequest(ACW.LIST_METRICS);
+	
+AWS Identity and Access Management
+	var iam:IAM = new IAM();
+	iam.setAWSCredentials(AWSKey.key,AWSKey.sec);
+	iam.addEventListener(AWSEvent.RESULT,awsHandler);
+	iam.executeRequest(IAM.LIST_ACCESS_KEYS);
+
+AWS Elastic Beanstalk 
+	var ebt:EBT = new EBT();
+	ebt.setAWSCredentials(AWSKey.key,AWSKey.sec);
+	ebt.addEventListener(AWSEvent.RESULT,awsHandler);
+	ebt.executeRequest(EBT.DESCRIBE_APPLICATIONS);
+
+注意
+-------
+本ライブラリを使うには、AWSとの契約と発行される Access Key ID と Secret Access Key が必要です。
+事前にご準備ください。
 
 コントリビューター
 -------

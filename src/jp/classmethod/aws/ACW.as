@@ -15,12 +15,12 @@ package jp.classmethod.aws
 	import mx.formatters.DateFormatter;
 	import mx.utils.ObjectUtil;
 
-	public class CloudWatch extends AWSBase
+	public class ACW extends AWSBase
 	{
 		
 		public static const LIST_METRICS:String = "ListMetrics";
 
-		public function CloudWatch() 
+		public function ACW() 
 		{
 			domainEndpoint="monitoring.amazonaws.com";
 			remoteRequestURL="http://" + domainEndpoint + endPointURLExtendsion;
