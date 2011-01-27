@@ -16,6 +16,7 @@ package jp.classmethod.aws
 	{
 		
 		public static const LIST_VERIFIED_EMAIL_ADDRESSES:String = "ListVerifiedEmailAddresses";
+		public static const SEND_EMAIL:String = "SendEmail";
 
 		public function SES() 
 		{
@@ -36,7 +37,10 @@ package jp.classmethod.aws
 			var auth:String = "AWS3-HTTPS AWSAccessKeyId="+_awsAccessKey+", Algorithm=HmacSHA256, Signature="+urlVariables.Signature;
 			var request:URLRequest=new URLRequest(remoteRequestURL);
 			
-			urlVariables = new URLVariables();
+			for each (var item:Parameter in urlVariablesArr){
+				urlVariables[item.key]=item.value;
+			}
+			
 			urlVariables["Action"] = action;
 			request.data=urlVariables;
 			request.method=requestMethod;

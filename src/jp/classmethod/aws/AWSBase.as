@@ -132,7 +132,13 @@ package jp.classmethod.aws
 					break;
 				case 3:
 					hmacEncrypter=new HMAC(new SHA256());
-					strToSign = urlVariablesArr[0].value;
+					for (var j:int=0; j < urlVariablesArr.length; j++)
+					{
+						if (urlVariablesArr[j].key == "Date"){
+							strToSign = urlVariablesArr[j].value;
+						}
+					}
+					//strToSign = urlVariablesArr["Date"].value;
 					requestData.writeUTFBytes(strToSign);
 					
 					break;

@@ -102,6 +102,21 @@ Amazon Simple Email Serivce
 	ses.setAWSCredentials(AWSKey.key,AWSKey.sec);
 	ses.addEventListener(AWSEvent.RESULT,awsHandler);
 	ses.executeRequest(SES.LIST_VERIFIED_EMAIL_ADDRESSES);
+	
+	or
+	
+	var ses:SES = new SES();
+	ses.setAWSCredentials(AWSKey.key,AWSKey.sec);
+	ses.addEventListener(AWSEvent.RESULT,awsHandler);
+	var vals:Array = new Array();
+	vals.push(new Parameter("Destination.ToAddresses.member.1","<to address>"));
+	vals.push(new Parameter("Message.Subject.Data","こんにちは Amazon SES"));
+	vals.push(new Parameter("Message.Subject.CharSet","Shift_JIS"));
+	vals.push(new Parameter("Message.Body.Text.Data","こんにちは、Amazon SES"));				
+	vals.push(new Parameter("Message.Body.Text.CharSet","Shift_JIS"));				
+	vals.push(new Parameter("Source","<from address>"));
+	ses.executeRequest(SES.SEND_EMAIL,vals);
+	
 
 
 イベントハンドラの記述の仕方
