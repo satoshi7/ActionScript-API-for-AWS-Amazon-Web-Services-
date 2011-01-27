@@ -2,6 +2,7 @@ package jp.classmethod.aws
 {
 	import com.hurlant.crypto.hash.HMAC;
 	import com.hurlant.crypto.hash.SHA1;
+	import com.hurlant.crypto.hash.SHA256;
 	import com.hurlant.util.Base64;
 	
 	import flash.events.Event;
@@ -77,11 +78,12 @@ package jp.classmethod.aws
 			return ds;
 		}
 		
-		protected function generateSignature(urlVariablesArr:Array, sigVersion:int=2, requestMethod:String="POST"):URLVariables
+		protected function generateSignature(urlVariablesArr:Array, sigVersion:int, requestMethod:String="POST"):URLVariables
 		{
 			var requestData:ByteArray=new ByteArray();
 			var secretKeyAsBytes:ByteArray=new ByteArray();
 			var urlVariables:URLVariables=new URLVariables();
+			var strToSign:String="";
 			
 			var hmacEncrypter:HMAC=null;
 			switch (sigVersion)
@@ -94,7 +96,7 @@ package jp.classmethod.aws
 				case 2:
 					hmacEncrypter=new HMAC(new SHA1());
 					
-					var strToSign:String="";
+					
 					var accessKeyStr:String="";
 					urlVariablesArr.push(new Parameter("SignatureVersion", sigVersion.toString()));
 					urlVariablesArr.push(new Parameter("SignatureMethod", "HmacSHA1"));
@@ -125,7 +127,12 @@ package jp.classmethod.aws
 					while (strToSign.indexOf(")") > 0)
 						strToSign=strToSign.replace(")", "%29");
 					
-					//trace(strToSign);
+					requestData.writeUTFBytes(strToSign);
+					
+					break;
+				case 3:
+					hmacEncrypter=new HMAC(new SHA256());
+					strToSign = urlVariablesArr[0].value;
 					requestData.writeUTFBytes(strToSign);
 					
 					break;
@@ -133,6 +140,18 @@ package jp.classmethod.aws
 			secretKeyAsBytes.writeUTFBytes(_awsSecretKey);
 			urlVariables.Signature=Base64.encodeByteArray(hmacEncrypter.compute(secretKeyAsBytes, requestData));
 			return urlVariables;
+		}
+		
+		public function getHeaderDateString():String{
+			// example : Tue, 25 May 2010 21:20:27 +0000
+			
+			var d:Date = new Date();
+			var utcd:Date = new Date(d.fullYearUTC,d.monthUTC,d.dateUTC,d.hoursUTC,d.minutesUTC,d.secondsUTC,d.millisecondsUTC);
+
+			var formatter:DateFormatter = new DateFormatter();
+			formatter.formatString = "EEE, D MMM YYYY J:N:S";
+			var str:String = formatter.format(utcd)+" GMT";
+			return str;
 		}
 		
 		public function handleRequest(event:Event):void

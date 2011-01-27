@@ -9,6 +9,7 @@ package jp.classmethod.aws
 	import flash.events.IOErrorEvent;
 	import flash.net.URLLoader;
 	import flash.net.URLRequest;
+	import flash.net.URLRequestHeader;
 	import flash.net.URLVariables;
 	import flash.utils.ByteArray;
 	
@@ -42,7 +43,7 @@ package jp.classmethod.aws
 			var request:URLRequest=new URLRequest(remoteRequestURL);
 			request.data=urlVariables;
 			request.method=requestMethod;
-
+						
 			var urlLoader:URLLoader=new URLLoader();
 			urlLoader.addEventListener(Event.COMPLETE, handleRequest);
 			urlLoader.addEventListener(IOErrorEvent.IO_ERROR, handleRequestIOError);
