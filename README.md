@@ -21,6 +21,7 @@ Amazon Web Services Query API が提供しているものはほぼ全ての操�
 * ACW - Amazon CloudWatch
 * IAM - AWS Identity and Access Management
 * EBT - AWS Elastic Beanstalk 
+* SES - Amazon Simple Email Service
 
 使い方
 -------
@@ -94,6 +95,13 @@ AWS Elastic Beanstalk
 	ebt.setAWSCredentials(AWSKey.key,AWSKey.sec);
 	ebt.addEventListener(AWSEvent.RESULT,awsHandler);
 	ebt.executeRequest(EBT.DESCRIBE_APPLICATIONS);
+
+
+Amazon Simple Email Serivce
+	var ses:SES = new SES();
+	ses.setAWSCredentials(AWSKey.key,AWSKey.sec);
+	ses.addEventListener(AWSEvent.RESULT,awsHandler);
+	ses.executeRequest(SES.LIST_VERIFIED_EMAIL_ADDRESSES);
 
 
 イベントハンドラの記述の仕方
