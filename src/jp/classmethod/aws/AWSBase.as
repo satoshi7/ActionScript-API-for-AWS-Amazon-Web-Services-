@@ -12,6 +12,8 @@ package jp.classmethod.aws
 	import flash.utils.ByteArray;
 	
 	import mx.formatters.DateFormatter;
+	import mx.resources.IResourceManager;
+	import mx.resources.ResourceManager;
 	
 	public class AWSBase extends EventDispatcher
 	{
@@ -150,15 +152,76 @@ package jp.classmethod.aws
 		
 		public function getHeaderDateString():String{
 			// example : Tue, 25 May 2010 21:20:27 +0000
-			
+						
 			var d:Date = new Date();
 			var utcd:Date = new Date(d.fullYearUTC,d.monthUTC,d.dateUTC,d.hoursUTC,d.minutesUTC,d.secondsUTC,d.millisecondsUTC);
 
-			var formatter:DateFormatter = new DateFormatter();
-			formatter.formatString = "EEE, D MMM YYYY J:N:S";
-			var str:String = formatter.format(utcd)+" GMT";
+			var str:String = getDateEEEString(utcd.getDay())
+							+", "
+							+utcd.getDate()
+							+" "
+							+getDateMMMString(utcd.getMonth())
+							+" "
+							+utcd.getFullYear()
+							+" "
+							+utcd.getHours()
+							+":"
+							+utcd.getMinutes()
+							+":"
+							+utcd.getSeconds()
+							+" GMT";
+			
+			trace(str);
 			return str;
 		}
+		
+		public function getDateMMMString(month:int):String{
+			
+			var str:String;
+			switch(month+1)
+			{
+				case 1: { str = "Jan"; break;}
+				case 2: { str = "Feb"; break;}
+				case 3: { str = "Mar"; break;}
+				case 4: { str = "Apr"; break;}
+				case 5: { str = "May"; break;}
+				case 6: { str = "Jun"; break;}
+				case 7: { str = "Jul"; break;}
+				case 8: { str = "Aug"; break;}
+				case 9: { str = "Sep"; break;}
+				case 10: { str = "Oct"; break;}
+				case 11: { str = "Nov"; break;}
+				case 12: { str = "Dec"; break;}
+				
+				default:
+				{
+					break;
+				}
+			}
+			return str;
+		}
+
+		public function getDateEEEString(day:int):String{
+			
+			var str:String;
+			switch(day)
+			{
+				case 0: { str = "San"; break;}
+				case 1: { str = "Mon"; break;}
+				case 2: { str = "Tue"; break;}
+				case 3: { str = "Wed"; break;}
+				case 4: { str = "Thu"; break;}
+				case 5: { str = "Fri"; break;}
+				case 6: { str = "Sat"; break;}
+					
+				default:
+				{
+					break;
+				}
+			}
+			return str;
+		}
+
 		
 		public function handleRequest(event:Event):void
 		{
