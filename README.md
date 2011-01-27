@@ -116,7 +116,8 @@ Amazon Simple Email Serivce
 	vals.push(new Parameter("Message.Body.Text.CharSet","Shift_JIS"));				
 	vals.push(new Parameter("Source","<from address>"));
 	ses.executeRequest(SES.SEND_EMAIL,vals);
-	
+
+    注意） Flexプロジェクトにてlocaleをen_USとしてください。DateFormatter利用のため。。。
 
 
 イベントハンドラの記述の仕方
