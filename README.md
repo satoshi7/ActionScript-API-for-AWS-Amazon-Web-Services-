@@ -1,22 +1,22 @@
 ActionScript API for AWS (Amazon Web Services)
 =============
 
-ActionScript からカンタンにAWSへアクセスするためのAPI群です。
+This is an ActionScript API Library Project for Amazon Web Services.
 
-とりあえずswcが必要な方はこちらへ
+Anyway, just download and try it!
 
 * [cmawslib.swc](https://github.com/satoshi7/ActionScript-API-for-AWS-Amazon-Web-Services-/blob/master/bin/cmawslib.swc)
 
-更新履歴
+Update History
 -------
-2011/2/9 : エンドポイントをコンストラクタで指定できるようにしました。
+2011/2/9 : Add constructor to change the region. 
 
-2011/2/9 : タイプミスを修正しました。
+2011/2/9 : Fix variable name...
 
-操作できるAPI
+Usable API's
 -------
 
-Amazon Web Services Query API が提供しているものはほぼ全ての操作に対応しています。
+These API's are compatible for Amazon Web Services Query API.
 
 * EC2 - Amazon Elastic Compute Cloud
 * EMR - Amazon Elastic MapReduce
@@ -29,89 +29,89 @@ Amazon Web Services Query API が提供しているものはほぼ全ての操�
 * EBT - AWS Elastic Beanstalk 
 * SES - Amazon Simple Email Service
 
-使い方
+How to Use
 -------
-本コードは Adobe Flex Library Project で作っています。
-ご使用の際には Adobe Flash Builder などでプロジェクトのインポートを行い、
-アプリケーション側の設定画面からライブラリ追加をしてご利用ください。 
+This is an ActionScript API Library Project (.swc)  for Amazon Web Services.
+You can import to Flash Builder Library Project or other development tool. 
 
-開発の仕方
+
+How to Development
 -------
-以下のように短いコードを書いて頂ければカンタンにAWSを操作できます。
+You can develop the application by a really little code. 
 
 
 Amazon Elastic Compute Cloud
-	var ec2:EC2 = new EC2();
+	var ec2:EC2 = new EC2(EC2.US_EAST_1);
 	ec2.setAWSCredentials(AWSKey.key,AWSKey.sec);
 	ec2.addEventListener(AWSEvent.RESULT,awsHandler);
-	ec2.executeRequest(EC2.DESCRIVE_REGIONS);
+	ec2.executeRequest(EC2.DESCRIBE_REGIONS);
 
 
 Amazon Elastic MapReduce
-	var emr:EMR = new EMR();
+	var emr:EMR = new EMR(EMR.US_EAST_1);
 	emr.setAWSCredentials(AWSKey.key,AWSKey.sec);
 	emr.addEventListener(AWSEvent.RESULT,awsHandler);
 	emr.executeRequest(EMR.DESCRIBE_JOB_FLOWS);
 
 
 Amazon Relational Database Service
-	var rds:RDS = new RDS();
+	var rds:RDS = new RDS(RDS.US_EAST_1);
 	rds.setAWSCredentials(AWSKey.key,AWSKey.sec);
 	rds.addEventListener(AWSEvent.RESULT,awsHandler);
 	rds.executeRequest(RDS.DESCRIBE_DB_INSTANCES);
 
 
 Amazon Simple Notification Service
-	var sns:SNS = new SNS();
+	var sns:SNS = new SNS(SNS.US_EAST_1);
 	sns.setAWSCredentials(AWSKey.key,AWSKey.sec);
 	sns.addEventListener(AWSEvent.RESULT,awsHandler);
 	sns.executeRequest(SNS.LIST_TOPICS);
 
 					
 Amazon SimpleDB
-	var sdb:SDB = new SDB();
+	var sdb:SDB = new SDB(SDB.US_EAST_1);
 	sdb.setAWSCredentials(AWSKey.key,AWSKey.sec);
 	sdb.addEventListener(AWSEvent.RESULT,awsHandler);
 	sdb.executeRequest(SDB.LIST_DOMAINS);
 
 
 Amazon Simple Queue Service
-	var sqs:SQS = new SQS();
+	var sqs:SQS = new SQS(SQS.US_EAST_1);
 	sqs.setAWSCredentials(AWSKey.key,AWSKey.sec);
 	sqs.addEventListener(AWSEvent.RESULT,awsHandler);
 	sqs.executeRequest(SQS.LIST_QUEUES);
 
 
 Amazon CloudWatch
-	var acw:ACW = new ACW();
+	var acw:ACW = new ACW(ACW.US_EAST_1);
 	acw.setAWSCredentials(AWSKey.key,AWSKey.sec);
 	acw.addEventListener(AWSEvent.RESULT,awsHandler);
 	acw.executeRequest(ACW.LIST_METRICS);
 
 	
 AWS Identity and Access Management
-	var iam:IAM = new IAM();
+	var iam:IAM = new IAM(IAM.US_EAST_1);
 	iam.setAWSCredentials(AWSKey.key,AWSKey.sec);
 	iam.addEventListener(AWSEvent.RESULT,awsHandler);
 	iam.executeRequest(IAM.LIST_ACCESS_KEYS);
 
 
 AWS Elastic Beanstalk 
-	var ebt:EBT = new EBT();
+	var ebt:EBT = new EBT(EBT.US_EAST_1);
 	ebt.setAWSCredentials(AWSKey.key,AWSKey.sec);
 	ebt.addEventListener(AWSEvent.RESULT,awsHandler);
 	ebt.executeRequest(EBT.DESCRIBE_APPLICATIONS);
 
 
 Amazon Simple Email Serivce
-	var ses:SES = new SES();
+	var ses:SES = new SES(SES.US_EAST_1);
 	ses.setAWSCredentials(AWSKey.key,AWSKey.sec);
 	ses.addEventListener(AWSEvent.RESULT,awsHandler);
 	ses.executeRequest(SES.LIST_VERIFIED_EMAIL_ADDRESSES);
 	
 	or
 	
-	var ses:SES = new SES();
+	var ses:SES = new SES(SES.US_EAST_1);
 	ses.setAWSCredentials(AWSKey.key,AWSKey.sec);
 	ses.addEventListener(AWSEvent.RESULT,awsHandler);
 	var vals:Array = new Array();
@@ -124,19 +124,20 @@ Amazon Simple Email Serivce
 	ses.executeRequest(SES.SEND_EMAIL,vals);
 
 
-イベントハンドラの記述の仕方
+How to code for event handler
 	public function awsHandler(event:AWSEvent):void{
 		var data:Object = event.data;
-		//XML形式のテキストが取得されます。
+		//You can get XML style text.
 		ta.text += data.toString();
 	}
 
-注意
+Conclusion
 -------
-本ライブラリを使うには、AWSと契約を行って頂き、発行される Access Key ID と Secret Access Key を使用します。
-事前にご準備ください。
 
-コントリビュータ
+To use this library, you have to contract to Amazon Web Services ( http://aws.amazon.com/ ) . And, use Access Key ID and Secret Access Key. 
+Please prepare it beforehand. 
+
+Contributor
 -------
 
 * [@sato_shi](http://twitter.com/sato_shi/) - Classmethod,Inc. [http://classmethod.jp/](http://classmethod.jp/)]
