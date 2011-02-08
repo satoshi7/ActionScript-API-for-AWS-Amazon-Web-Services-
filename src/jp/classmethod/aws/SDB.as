@@ -15,15 +15,29 @@ package jp.classmethod.aws
 	import mx.formatters.DateFormatter;
 	import mx.rpc.soap.AbstractWebService;
 
-
+	/**
+	 * Amazon SimpleDB 
+	 * @author satoshi
+	 * 
+	 */
 	public class SDB extends AWSBase
 	{
 		public static const LIST_DOMAINS:String = "ListDomains";
 		
-		public function SDB()
+		//endpoint option
+		public static const US_EAST_1:String = "sdb.amazonaws.com";
+		public static const US_WEST_1:String = "sdb.us-west-1.amazonaws.com";
+		public static const EU_WEST_1:String = "sdb.eu-west-1.amazonaws.com";
+		public static const AP_SOUTHEAST_1:String = "sdb.ap-southeast-1.amazonaws.com";
+		
+		public function SDB(str:String=null) 
 		{
-			domainEndpoint="sdb.amazonaws.com";;
-			remoteRequestURL=protocol + domainEndpoint + endPointURLExtendsion;
+			if(str != null){
+				domainEndpoint=str;
+			}else{
+				domainEndpoint=SDB.US_EAST_1;
+			}
+			remoteRequestURL=protocol + _domainEndpoint + endPointURLExtendsion;
 		}
 
 		public function executeRequest(action:String, urlVariablesArr:Array=null, requestMethod:String="POST"):void

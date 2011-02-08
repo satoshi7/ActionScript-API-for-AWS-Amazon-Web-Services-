@@ -15,14 +15,29 @@ package jp.classmethod.aws
 	import mx.formatters.DateFormatter;
 	import mx.utils.ObjectUtil;
 
+	/**
+	 * Amazon Simple Queue Service 
+	 * @author satoshi
+	 * 
+	 */
 	public class SQS extends AWSBase
 	{
 		public static const LIST_QUEUES:String = "ListQueues";
 		
-		public function SQS()
+		//endpoint option
+		public static const US_EAST_1:String = "sqs.us-east-1.amazonaws.com";
+		public static const US_WEST_1:String = "sqs.us-west-1.amazonaws.com";
+		public static const EU_WEST_1:String = "sqs.eu-west-1.amazonaws.com";
+		public static const AP_SOUTHEAST_1:String = "sqs.ap-southeast-1.amazonaws.com";
+		
+		public function SQS(str:String=null) 
 		{
-			domainEndpoint="sqs.us-east-1.amazonaws.com";
-			remoteRequestURL=protocol + domainEndpoint + endPointURLExtendsion;
+			if(str != null){
+				domainEndpoint=str;
+			}else{
+				domainEndpoint=SQS.US_EAST_1;
+			}
+			remoteRequestURL=protocol + _domainEndpoint + endPointURLExtendsion;
 		}
 
 		public function executeRequest(action:String, urlVariablesArr:Array=null, requestMethod:String="POST"):void

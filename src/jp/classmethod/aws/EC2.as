@@ -6,16 +6,31 @@ package jp.classmethod.aws
 	import flash.net.URLRequest;
 	import flash.net.URLVariables;
 	
+	/**
+	 * Amazon Elastic Compute Cloud 
+	 * @author satoshi
+	 * 
+	 */
 	public class EC2 extends AWSBase
 	{
 		
 		public static const DESCRIBE_INSTANCES:String = "DescribeInstances";
-		public static const DESCRIVE_REGIONS:String = "DescribeRegions";
-
-		public function EC2() 
+		public static const DESCRIBE_REGIONS:String = "DescribeRegions";
+		
+		//endpoint option
+		public static const US_EAST_1:String = "ec2.us-east-1.amazonaws.com";
+		public static const US_WEST_1:String = "ec2.us-west-1.amazonaws.com";
+		public static const EU_WEST_1:String = "ec2.eu-west-1.amazonaws.com";
+		public static const AP_SOUTHEAST_1:String = "ec2.ap-southeast-1.amazonaws.com";
+		
+		public function EC2(str:String=null) 
 		{
-			domainEndpoint="ec2.amazonaws.com";
-			remoteRequestURL=protocol + domainEndpoint + endPointURLExtendsion;
+			if(str != null){
+				domainEndpoint=str;
+			}else{
+				domainEndpoint=EC2.US_EAST_1;
+			}
+			remoteRequestURL=protocol + _domainEndpoint + endPointURLExtendsion;
 		}
 
 		public function executeRequest(action:String, urlVariablesArr:Array=null, requestMethod:String="POST"):void

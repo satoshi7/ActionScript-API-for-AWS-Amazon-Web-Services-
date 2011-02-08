@@ -15,15 +15,30 @@ package jp.classmethod.aws
 	import mx.formatters.DateFormatter;
 	import mx.utils.ObjectUtil;
 
+	/**
+	 * Amazon Simple Notification Service 
+	 * @author satoshi
+	 * 
+	 */
 	public class SNS extends AWSBase
 	{
 
 		public static const LIST_TOPICS:String = "ListTopics";
 		
-		public function SNS()
+		//endpoint option
+		public static const US_EAST_1:String = "sns.us-east-1.amazonaws.com";
+		public static const US_WEST_1:String = "sns.us-west-1.amazonaws.com";
+		public static const EU_WEST_1:String = "sns.eu-west-1.amazonaws.com";
+		public static const AP_SOUTHEAST_1:String = "sns.ap-southeast-1.amazonaws.com";
+		
+		public function SNS(str:String=null) 
 		{
-			domainEndpoint="sns.us-east-1.amazonaws.com";
-			remoteRequestURL=protocol + domainEndpoint + endPointURLExtendsion;
+			if(str != null){
+				domainEndpoint=str;
+			}else{
+				domainEndpoint=SNS.US_EAST_1;
+			}
+			remoteRequestURL=protocol + _domainEndpoint + endPointURLExtendsion;
 		}
 
 		public function executeRequest(action:String, urlVariablesArr:Array=null, requestMethod:String="POST"):void

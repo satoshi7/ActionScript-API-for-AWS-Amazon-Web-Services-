@@ -15,15 +15,30 @@ package jp.classmethod.aws
 	import mx.formatters.DateFormatter;
 	import mx.utils.ObjectUtil;
 
+	/**
+	 * Amazon CloudWatch 
+	 * @author satoshi
+	 * 
+	 */	
 	public class ACW extends AWSBase
 	{
 		
 		public static const LIST_METRICS:String = "ListMetrics";
 
-		public function ACW() 
+		//endpoint option
+		public static const US_EAST_1:String = "monitoring.us-east-1.amazonaws.com";
+		public static const US_WEST_1:String = "monitoring.us-west-1.amazonaws.com";
+		public static const EU_WEST_1:String = "monitoring.eu-west-1.amazonaws.com";
+		public static const AP_SOUTHEAST_1:String = "monitoring.ap-southeast-1.amazonaws.com";
+		
+		public function ACW(str:String=null) 
 		{
-			domainEndpoint="monitoring.amazonaws.com";
-			remoteRequestURL="http://" + domainEndpoint + endPointURLExtendsion;
+			if(str != null){
+				domainEndpoint=str;
+			}else{
+				domainEndpoint=ACW.US_EAST_1;
+			}
+			remoteRequestURL="http://" + _domainEndpoint + endPointURLExtendsion;
 		}
 
 		public function executeRequest(action:String, urlVariablesArr:Array=null, requestMethod:String="POST"):void

@@ -16,6 +16,11 @@ package jp.classmethod.aws
 	import mx.formatters.DateFormatter;
 	import mx.utils.ObjectUtil;
 
+	/**
+	 * AWS Elastic Beanstalk 
+	 * @author satoshi
+	 * 
+	 */
 	public class EBT extends AWSBase
 	{
 		public static const DESCRIBE_APPLICATIONS:String = "DescribeApplications";
@@ -23,7 +28,7 @@ package jp.classmethod.aws
 		public function EBT()
 		{
 			domainEndpoint="elasticbeanstalk.us-east-1.amazonaws.com";
-			remoteRequestURL=protocol + domainEndpoint + endPointURLExtendsion;
+			remoteRequestURL=protocol + _domainEndpoint + endPointURLExtendsion;
 		}
 
 		public function executeRequest(action:String, urlVariablesArr:Array=null, requestMethod:String="POST"):void

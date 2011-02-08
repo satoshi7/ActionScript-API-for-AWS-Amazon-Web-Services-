@@ -12,16 +12,28 @@ package jp.classmethod.aws
 	import mx.formatters.DateFormatter;
 	import mx.utils.ObjectUtil;
 	
+	/**
+	 * Amazon Simple Email Service 
+	 * @author satoshi
+	 * 
+	 */
 	public class SES extends AWSBase
 	{
 		
 		public static const LIST_VERIFIED_EMAIL_ADDRESSES:String = "ListVerifiedEmailAddresses";
 		public static const SEND_EMAIL:String = "SendEmail";
-
-		public function SES() 
+		
+		//endpoint option
+		public static const US_EAST_1:String = "email.us-east-1.amazonaws.com";
+		
+		public function SES(str:String=null) 
 		{
-			domainEndpoint="email.us-east-1.amazonaws.com";
-			remoteRequestURL=protocol + domainEndpoint + endPointURLExtendsion;
+			if(str != null){
+				domainEndpoint=str;
+			}else{
+				domainEndpoint=SES.US_EAST_1;
+			}
+			remoteRequestURL=protocol + _domainEndpoint + endPointURLExtendsion;
 		}
 
 		public function executeRequest(action:String, urlVariablesArr:Array=null, requestMethod:String="POST"):void

@@ -17,14 +17,28 @@ package jp.classmethod.aws
 	import mx.formatters.DateFormatter;
 	import mx.utils.ObjectUtil;
 
+	/**
+	 * Amazon Elastic MapReduce 
+	 * @author satoshi
+	 * 
+	 */
 	public class EMR extends AWSBase
 	{
 		public static const DESCRIBE_JOB_FLOWS:String = "DescribeJobFlows";
 		
-		public function EMR()
+		//endpoint option
+		public static const US_EAST_1:String = "elasticmapreduce.us-east-1.amazonaws.com";
+		public static const US_WEST_1:String = "elasticmapreduce.us-west-1.amazonaws.com";
+		public static const EU_WEST_1:String = "elasticmapreduce.eu-west-1.amazonaws.com";
+		
+		public function EMR(str:String=null) 
 		{
-			domainEndpoint="elasticmapreduce.amazonaws.com";
-			remoteRequestURL=protocol + domainEndpoint + endPointURLExtendsion;
+			if(str != null){
+				domainEndpoint=str;
+			}else{
+				domainEndpoint=EMR.US_EAST_1;
+			}
+			remoteRequestURL=protocol + _domainEndpoint + endPointURLExtendsion;
 		}
 
 		public function executeRequest(action:String, urlVariablesArr:Array=null, requestMethod:String="POST"):void

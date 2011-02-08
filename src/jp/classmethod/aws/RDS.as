@@ -15,14 +15,29 @@ package jp.classmethod.aws
 	import mx.formatters.DateFormatter;
 	import mx.utils.ObjectUtil;
 
+	/**
+	 * Amazon Relational Database Service 
+	 * @author satoshi
+	 * 
+	 */
 	public class RDS extends AWSBase
 	{
 		public static const DESCRIBE_DB_INSTANCES:String = "DescribeDBInstances";
 		
-		public function RDS()
+		//endpoint option
+		public static const US_EAST_1:String = "rds.us-east-1.amazonaws.com";
+		public static const US_WEST_1:String = "rds.us-west-1.amazonaws.com";
+		public static const EU_WEST_1:String = "rds.eu-west-1.amazonaws.com";
+		public static const AP_SOUTHEAST_1:String = "rds.ap-southeast-1.amazonaws.com";
+		
+		public function RDS(str:String=null) 
 		{
-			domainEndpoint="rds.amazonaws.com";
-			remoteRequestURL=protocol + domainEndpoint + endPointURLExtendsion;
+			if(str != null){
+				domainEndpoint=str;
+			}else{
+				domainEndpoint=RDS.US_EAST_1;
+			}
+			remoteRequestURL=protocol + _domainEndpoint + endPointURLExtendsion;
 		}
 		public function executeRequest(action:String, urlVariablesArr:Array=null, requestMethod:String="POST"):void
 		{

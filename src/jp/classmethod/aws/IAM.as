@@ -17,14 +17,26 @@ package jp.classmethod.aws
 	import mx.formatters.DateFormatter;
 	import mx.utils.ObjectUtil;
 
+	/**
+	 * AWS Identity and Access Management 
+	 * @author satoshi
+	 * 
+	 */
 	public class IAM extends AWSBase
 	{
 		public static const LIST_ACCESS_KEYS:String = "ListAccessKeys";
 		
-		public function IAM()
+		//endpoint option
+		public static const US_EAST_1:String = "iam.amazonaws.com";
+		
+		public function IAM(str:String=null) 
 		{
-			domainEndpoint="iam.amazonaws.com";
-			remoteRequestURL=protocol + domainEndpoint + endPointURLExtendsion;
+			if(str != null){
+				domainEndpoint=str;
+			}else{
+				domainEndpoint=IAM.US_EAST_1;
+			}
+			remoteRequestURL=protocol + _domainEndpoint + endPointURLExtendsion;
 		}
 
 		public function executeRequest(action:String, urlVariablesArr:Array=null, requestMethod:String="POST"):void

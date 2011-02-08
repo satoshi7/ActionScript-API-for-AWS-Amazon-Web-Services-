@@ -15,6 +15,11 @@ package jp.classmethod.aws
 	import mx.resources.IResourceManager;
 	import mx.resources.ResourceManager;
 	
+	/**
+	 * base class
+	 * @author satoshi
+	 * 
+	 */	
 	public class AWSBase extends EventDispatcher
 	{
 		protected static var _awsAccessKey:String="";
@@ -22,7 +27,7 @@ package jp.classmethod.aws
 		protected static var remoteRequestURL:String="";
 		protected static var endPointURLExtendsion:String="/";
 		protected static var protocol:String="https://";
-		protected static var domainEndpoint:String="";
+		protected var _domainEndpoint:String="";
 		protected static var signatureVersionToUse:int=2;
 		protected var dateFormatter:DateFormatter;
 		
@@ -31,7 +36,11 @@ package jp.classmethod.aws
 			dateFormatter=new DateFormatter();
 			dateFormatter.formatString="YYYY-MM-DTJ:NN:SSZ";
 			
-			remoteRequestURL=protocol + domainEndpoint + endPointURLExtendsion;
+			remoteRequestURL=protocol + _domainEndpoint + endPointURLExtendsion;
+		}
+		
+		public function set domainEndpoint(name:String):void{
+			this._domainEndpoint = name;
 		}
 		
 		protected function setSignatureVersion(sigVer:int):void
@@ -113,7 +122,7 @@ package jp.classmethod.aws
 						else
 							strToSign+="&" + urlVariablesArr[i].key + "=" + encodeURIComponent(urlVariablesArr[i].value);
 					}
-					strToSign=requestMethod + "\n" + domainEndpoint + "\n" + endPointURLExtendsion + "\n" + accessKeyStr + strToSign;
+					strToSign=requestMethod + "\n" + _domainEndpoint + "\n" + endPointURLExtendsion + "\n" + accessKeyStr + strToSign;
 					while (strToSign.indexOf("!") >= 0)
 						strToSign=strToSign.replace("!", "%21");
 					
