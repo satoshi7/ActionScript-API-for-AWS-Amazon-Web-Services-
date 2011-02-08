@@ -11,10 +11,6 @@ package jp.classmethod.aws
 	import flash.net.URLVariables;
 	import flash.utils.ByteArray;
 	
-	import mx.formatters.DateFormatter;
-	import mx.resources.IResourceManager;
-	import mx.resources.ResourceManager;
-	
 	/**
 	 * base class
 	 * @author satoshi
@@ -29,13 +25,9 @@ package jp.classmethod.aws
 		protected static var protocol:String="https://";
 		protected var _domainEndpoint:String="";
 		protected static var signatureVersionToUse:int=2;
-		protected var dateFormatter:DateFormatter;
 		
 		public function AWSBase()
 		{
-			dateFormatter=new DateFormatter();
-			dateFormatter.formatString="YYYY-MM-DTJ:NN:SSZ";
-			
 			remoteRequestURL=protocol + _domainEndpoint + endPointURLExtendsion;
 		}
 		
@@ -60,7 +52,9 @@ package jp.classmethod.aws
 			var splitArr2:Array=null;
 			
 			var dd:Date=new Date(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate(), d.getUTCHours(), d.getUTCMinutes(), d.getUTCSeconds(), d.getUTCMilliseconds());
-			var ds:String=dateFormatter.format(dd);
+			//var ds:String=dateFormatter.format(dd);
+			var ds:String=getSignatureDateString(dd);
+			trace(ds.toString());
 			
 			if (d.getUTCHours() < 10)
 			{
@@ -231,6 +225,25 @@ package jp.classmethod.aws
 			return str;
 		}
 
+		public function getSignatureDateString(date:Date):String{
+			//YYYY-MM-DTJ:NN:SSZ
+			var ds:String = "";
+			ds += date.getFullYear().toString();
+			ds += "-";
+			ds += (date.getMonth()+1).toString();
+			ds += "-";
+			ds += date.getDate().toString();
+			ds += "T";
+			ds += date.getHours().toString();
+			ds += ":";
+			ds += date.getMinutes().toString();
+			ds += ":";
+			ds += date.getSeconds().toString();
+			ds += "Z";
+			
+			return ds;
+		}
+		
 		
 		public function handleRequest(event:Event):void
 		{
