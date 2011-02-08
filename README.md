@@ -10,6 +10,8 @@ Anyway, just download and try it!
 Update History
 -------
 
+2011/2/9 : Removed flex mx package classes. ex) DateFormatter
+
 2011/2/9 : Added Amazon Elastic Load Balancing, Auto Scaling.
 
 2011/2/9 : Added constructor to change the region. 
