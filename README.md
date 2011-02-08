@@ -9,9 +9,12 @@ Anyway, just download and try it!
 
 Update History
 -------
-2011/2/9 : Add constructor to change the region. 
 
-2011/2/9 : Fix variable name...
+2011/2/9 : Added Amazon Elastic Load Balancing, Auto Scaling.
+
+2011/2/9 : Added constructor to change the region. 
+
+2011/2/9 : Fixed variable name...
 
 Usable API's
 -------
@@ -28,6 +31,8 @@ These API's are compatible for Amazon Web Services Query API.
 * IAM - AWS Identity and Access Management
 * EBT - AWS Elastic Beanstalk 
 * SES - Amazon Simple Email Service
+* ASC - Auto Scaling
+* ELB - Amazon Elastic Load Balancing
 
 How to Use
 -------
@@ -116,12 +121,26 @@ Amazon Simple Email Serivce
 	ses.addEventListener(AWSEvent.RESULT,awsHandler);
 	var vals:Array = new Array();
 	vals.push(new Parameter("Destination.ToAddresses.member.1","<to address>"));
-	vals.push(new Parameter("Message.Subject.Data","こんにちは Amazon SES"));
+	vals.push(new Parameter("Message.Subject.Data","Hello Amazon SES"));
 	vals.push(new Parameter("Message.Subject.CharSet","Shift_JIS"));
-	vals.push(new Parameter("Message.Body.Text.Data","こんにちは、Amazon SES"));				
+	vals.push(new Parameter("Message.Body.Text.Data","Hello、Amazon SES"));				
 	vals.push(new Parameter("Message.Body.Text.CharSet","Shift_JIS"));				
 	vals.push(new Parameter("Source","<from address>"));
 	ses.executeRequest(SES.SEND_EMAIL,vals);
+	
+
+Amazon Elastic Load Balancing
+	var elb:ELB = new ELB(ELB.EU_WEST_1);
+	elb.setAWSCredentials(AWSKey.key,AWSKey.sec);
+	elb.addEventListener(AWSEvent.RESULT,awsHandler);
+	elb.executeRequest(ELB.DESCRIBE_LOAD_BALANCERS);			
+
+
+Auto Scaling 
+	var asc:ASC = new ASC(ASC.EU_WEST_1);
+	asc.setAWSCredentials(AWSKey.key,AWSKey.sec);
+	asc.addEventListener(AWSEvent.RESULT,awsHandler);
+	asc.executeRequest(ASC.DESCRIBE_SCALING_ACTIVITIES);			
 
 
 How to code for event handler
