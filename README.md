@@ -7,6 +7,11 @@ ActionScript からカンタンにAWSへアクセスするためのAPI群です�
 
 * [cmawslib.swc](https://github.com/satoshi7/ActionScript-API-for-AWS-Amazon-Web-Services-/blob/master/bin/cmawslib.swc)
 
+更新履歴
+-------
+2011/2/9 : エンドポイントをコンストラクタで指定できるようにしました。
+2011/2/9 : タイプミスを修正しました。
+
 操作できるAPI
 -------
 
