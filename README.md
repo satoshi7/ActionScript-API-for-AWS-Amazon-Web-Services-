@@ -37,7 +37,7 @@ These API's are compatible for Amazon Web Services Query API.
 * SES - Amazon Simple Email Service
 * ASC - Auto Scaling
 * ELB - Amazon Elastic Load Balancing
-* S3  - Added Amazon Simple Storage Service
+* S3  - Amazon Simple Storage Service
 * VPC - Amazon Virtual Private Cloud
 
 How to Use
