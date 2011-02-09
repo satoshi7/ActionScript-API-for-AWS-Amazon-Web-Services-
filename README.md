@@ -10,13 +10,15 @@ Anyway, just download and try it!
 Update History
 -------
 
-2011/2/9 : Removed flex mx package classes. ex) DateFormatter
+2011/2/10 : Added Amazon Simple Storage Service, Amazon Virtual Private Cloud.
 
-2011/2/9 : Added Amazon Elastic Load Balancing, Auto Scaling.
+2011/2/9  : Removed flex mx package classes. ex) DateFormatter
 
-2011/2/9 : Added constructor to change the region. 
+2011/2/9  : Added Amazon Elastic Load Balancing, Auto Scaling.
 
-2011/2/9 : Fixed variable name...
+2011/2/9  : Added constructor to change the region. 
+
+2011/2/9  : Fixed variable name...
 
 Usable API's
 -------
@@ -35,6 +37,8 @@ These API's are compatible for Amazon Web Services Query API.
 * SES - Amazon Simple Email Service
 * ASC - Auto Scaling
 * ELB - Amazon Elastic Load Balancing
+* S3  - Added Amazon Simple Storage Service
+* VPC - Amazon Virtual Private Cloud
 
 How to Use
 -------
@@ -143,6 +147,30 @@ Auto Scaling
 	asc.setAWSCredentials(AWSKey.key,AWSKey.sec);
 	asc.addEventListener(AWSEvent.RESULT,awsHandler);
 	asc.executeRequest(ASC.DESCRIBE_SCALING_ACTIVITIES);			
+
+
+Amazon Simple Storage Service
+	var s3:S3 = new S3(S3.US_EAST_1);
+	s3.setAWSCredentials(AWSKey.key,AWSKey.sec);
+	s3.addEventListener(AWSEvent.RESULT,awsHandler);
+	s3.executeRequest();
+
+	or
+	
+	var s3:S3 = new S3(S3.US_EAST_1);
+	s3.setAWSCredentials(AWSKey.key,AWSKey.sec);
+	s3.addEventListener(AWSEvent.RESULT,awsHandler);
+	var vals:Array = new Array();
+	vals.push(new Parameter("Bucket","<bucket-name>"));
+	vals.push(new Parameter("Resources","<resource-path>"));
+	s3.executeRequest(null,vals,"GET");
+	
+
+Amazon Virtual Private Cloud
+	var vpc:VPC = new VPC(VPC.US_EAST_1);
+	vpc.setAWSCredentials(AWSKey.key,AWSKey.sec);
+	vpc.addEventListener(AWSEvent.RESULT,awsHandler);
+	vpc.executeRequest(VPC.DESCRIBE_CUSTOMER_GATEWAYS);			
 
 
 How to code for event handler

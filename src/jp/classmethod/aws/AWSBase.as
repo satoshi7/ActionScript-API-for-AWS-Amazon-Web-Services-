@@ -52,9 +52,7 @@ package jp.classmethod.aws
 			var splitArr2:Array=null;
 			
 			var dd:Date=new Date(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate(), d.getUTCHours(), d.getUTCMinutes(), d.getUTCSeconds(), d.getUTCMilliseconds());
-			//var ds:String=dateFormatter.format(dd);
 			var ds:String=getSignatureDateString(dd);
-			trace(ds.toString());
 			
 			if (d.getUTCHours() < 10)
 			{
@@ -93,9 +91,39 @@ package jp.classmethod.aws
 			var hmacEncrypter:HMAC=null;
 			switch (sigVersion)
 			{
+				// for S3
+				case 0:
+					hmacEncrypter=new HMAC(new SHA1());
+					var dateStr:String;
+					var resourcesStr:String = "";
+					var httpVerb:String;
+					var bucket:String = "";
+					var amzHeaders:String;
+					
+					for (var k:int=0; k < urlVariablesArr.length; k++)
+					{
+						if (urlVariablesArr[k].key == "Date"){
+							dateStr = urlVariablesArr[k].value;
+						}
+						if (urlVariablesArr[k].key == "Resources"){
+							resourcesStr = urlVariablesArr[k].value;
+						}
+						if (urlVariablesArr[k].key == "HTTP-Verb"){
+							httpVerb = urlVariablesArr[k].value;
+						}
+						if (urlVariablesArr[k].key == "Bucket"){
+							bucket = urlVariablesArr[k].value;
+						}
+					}
+					strToSign += httpVerb+"\n";
+					strToSign += "\n";
+					strToSign += "\n";
+					strToSign += dateStr+"\n";
+					strToSign += "/"+bucket+resourcesStr;
+					requestData.writeUTFBytes(strToSign);
+					break;
 				
 				case 1: //deprecated
-					
 					break;
 				
 				case 2:
@@ -143,11 +171,11 @@ package jp.classmethod.aws
 							strToSign = urlVariablesArr[j].value;
 						}
 					}
-					//strToSign = urlVariablesArr["Date"].value;
 					requestData.writeUTFBytes(strToSign);
 					
 					break;
 			}
+			trace(requestData);
 			secretKeyAsBytes.writeUTFBytes(_awsSecretKey);
 			urlVariables.Signature=Base64.encodeByteArray(hmacEncrypter.compute(secretKeyAsBytes, requestData));
 			return urlVariables;
@@ -174,7 +202,6 @@ package jp.classmethod.aws
 							+utcd.getSeconds()
 							+" GMT";
 			
-			trace(str);
 			return str;
 		}
 		
