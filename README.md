@@ -184,8 +184,7 @@ Amazon CloudFront
 	var vpc:ACF = new ACF();
 	vpc.setAWSCredentials(AWSKey.key,AWSKey.sec);
 	vpc.addEventListener(AWSEvent.RESULT,awsHandler);
-	var vals:Array = new Array();
-	vpc.executeRequest(null,vals,"GET");
+	vpc.executeRequest();
 	
 	
 Amazon Route 53	

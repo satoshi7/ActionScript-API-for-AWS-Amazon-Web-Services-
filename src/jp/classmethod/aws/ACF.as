@@ -36,6 +36,10 @@ package jp.classmethod.aws
 		{
 			var dateString:String = AWSDateUtil.getHeaderDateString();
 			
+			if(!urlVariablesArr){
+				urlVariablesArr = new Array();
+			}
+			
 			urlVariablesArr.push(new Parameter("HTTP-Verb",requestMethod));
 			urlVariablesArr.push(new Parameter("Date", dateString));
 			var urlVariables:URLVariables=generateSignature(urlVariablesArr, 4, requestMethod);
