@@ -10,6 +10,8 @@ Anyway, just download and try it!
 Update History
 -------
 
+2011/2/11 : Added Amazon CloudFront.
+
 2011/2/10 : Added Amazon Simple Storage Service, Amazon Virtual Private Cloud.
 
 2011/2/9  : Removed flex mx package classes. ex) DateFormatter
