@@ -89,7 +89,7 @@ package jp.classmethod.aws
 					requestData.writeUTFBytes(strToSign);
 					break;
 				
-				case 1: //deprecated
+				case 1: 
 					break;
 				
 				case 2:
@@ -125,7 +125,6 @@ package jp.classmethod.aws
 					
 					while (strToSign.indexOf(")") > 0)
 						strToSign=strToSign.replace(")", "%29");
-					
 					requestData.writeUTFBytes(strToSign);
 					
 					break;

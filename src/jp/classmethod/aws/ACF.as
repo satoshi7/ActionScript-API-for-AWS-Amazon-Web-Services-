@@ -55,8 +55,8 @@ package jp.classmethod.aws
 			var host:String = "cloudfront.amazonaws.com";
 			var distribution:String = "/2010-11-01/distribution";
 			
-			var contentHeader:URLRequestHeader = new URLRequestHeader("Host",host);
-			request.requestHeaders.push(contentHeader);
+			var hostHeader:URLRequestHeader = new URLRequestHeader("Host",host);
+			request.requestHeaders.push(hostHeader);
 			var dateHeader:URLRequestHeader = new URLRequestHeader("Date",dateString);
 			request.requestHeaders.push(dateHeader);
 			var authheader:URLRequestHeader=new URLRequestHeader("Authorization",auth);
