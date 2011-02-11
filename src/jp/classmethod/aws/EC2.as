@@ -16,7 +16,19 @@ package jp.classmethod.aws
 		
 		public static const DESCRIBE_INSTANCES:String = "DescribeInstances";
 		public static const DESCRIBE_REGIONS:String = "DescribeRegions";
-		
+		public static const DESCRIBE_AVAILABILITY_ZONES:String = "DescribeAvailabilityZones";
+		public static const DESCRIBE_BUNDLE_TASKS:String = "DescribeBundleTasks";
+		public static const DESCRIBE_CONVERSION_TASKS:String = "DescribeConversionTasks";
+		public static const DESCRIBE_KEY_PAIRS:String = "DescribeKeyPairs";
+		public static const DESCRIBE_RESERVED_INSTANCES:String = "DescribeReservedInstances";
+		public static const DESCRIBE_RESERVED_INSTANCES_OFFERINGS:String = "DescribeReservedInstancesOfferings";
+		public static const DESCRIBE_SECURITY_GROUPS:String = "DescribeSecurityGroups";
+		public static const DESCRIBE_SNAP_SHOTS:String = "DescribeSnapshots";
+		public static const DESCRIBE_SPOT_DATA_FEED_SUBSCRIPTION:String = "DescribeSpotDatafeedSubscription";
+		public static const DESCRIBE_SPOT_INSTANCE_REQUESTS:String = "DescribeSpotInstanceRequests";
+		public static const DESCRIBE_SPOT_PRICE_HISTORY:String = "DescribeSpotPriceHistory";
+		public static const DESCRIBE_TAGS:String = "DescribeTags";
+		public static const DESCRIBE_VOLUMES:String = "DescribeVolumes";
 		
 		//endpoint option
 		public static const US_EAST_1:String = "ec2.us-east-1.amazonaws.com";
