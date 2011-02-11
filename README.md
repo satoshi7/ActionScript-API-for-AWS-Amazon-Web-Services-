@@ -39,6 +39,7 @@ These API's are compatible for Amazon Web Services Query API.
 * ELB - Amazon Elastic Load Balancing
 * S3  - Amazon Simple Storage Service
 * VPC - Amazon Virtual Private Cloud
+* ACF - Amazon CloudFront
 
 How to Use
 -------
@@ -170,7 +171,15 @@ Amazon Virtual Private Cloud
 	var vpc:VPC = new VPC(VPC.US_EAST_1);
 	vpc.setAWSCredentials(AWSKey.key,AWSKey.sec);
 	vpc.addEventListener(AWSEvent.RESULT,awsHandler);
-	vpc.executeRequest(VPC.DESCRIBE_CUSTOMER_GATEWAYS);			
+	vpc.executeRequest(VPC.DESCRIBE_CUSTOMER_GATEWAYS);	
+
+
+Amazon CloudFront
+	var vpc:ACF = new ACF();
+	vpc.setAWSCredentials(AWSKey.key,AWSKey.sec);
+	vpc.addEventListener(AWSEvent.RESULT,awsHandler);
+	var vals:Array = new Array();
+	vpc.executeRequest(null,vals,"GET");
 
 
 How to code for event handler
