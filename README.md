@@ -3,7 +3,7 @@ ActionScript API for AWS (Amazon Web Services)
 
 This is an ActionScript API Library Project for Amazon Web Services.
 
-Anyway, just download and try it!
+Anyway, try it!
 
 * [cmawslib.swc](https://github.com/satoshi7/ActionScript-API-for-AWS-Amazon-Web-Services-/blob/master/bin/cmawslib.swc)
 
