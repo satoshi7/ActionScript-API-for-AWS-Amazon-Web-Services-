@@ -42,6 +42,7 @@ These API's are compatible for Amazon Web Services Query API.
 * S3  - Amazon Simple Storage Service
 * VPC - Amazon Virtual Private Cloud
 * ACF - Amazon CloudFront
+* AIE - Amazon Import/Export  -- under development..
 
 How to Use
 -------
