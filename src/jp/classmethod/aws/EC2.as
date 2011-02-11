@@ -17,6 +17,7 @@ package jp.classmethod.aws
 		public static const DESCRIBE_INSTANCES:String = "DescribeInstances";
 		public static const DESCRIBE_REGIONS:String = "DescribeRegions";
 		
+		
 		//endpoint option
 		public static const US_EAST_1:String = "ec2.us-east-1.amazonaws.com";
 		public static const US_WEST_1:String = "ec2.us-west-1.amazonaws.com";

@@ -10,6 +10,8 @@ Anyway, just download and try it!
 Update History
 -------
 
+2011/2/12 : Added Amazon Route 53.
+
 2011/2/11 : Added Amazon CloudFront.
 
 2011/2/10 : Added Amazon Simple Storage Service, Amazon Virtual Private Cloud.
@@ -43,6 +45,7 @@ These API's are compatible for Amazon Web Services Query API.
 * VPC - Amazon Virtual Private Cloud
 * ACF - Amazon CloudFront
 * AIE - Amazon Import/Export  -- under development..
+* R53 - Amazon Route 53
 
 How to Use
 -------
@@ -183,6 +186,13 @@ Amazon CloudFront
 	vpc.addEventListener(AWSEvent.RESULT,awsHandler);
 	var vals:Array = new Array();
 	vpc.executeRequest(null,vals,"GET");
+	
+	
+Amazon Route 53	
+	var r53:R53 = new R53();
+	r53.setAWSCredentials(AWSKey.key,AWSKey.sec);
+	r53.addEventListener(AWSEvent.RESULT,awsHandler);
+	r53.executeRequest();			
 
 
 How to code for event handler
