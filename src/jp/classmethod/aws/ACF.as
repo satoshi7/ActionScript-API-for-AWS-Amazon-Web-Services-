@@ -14,25 +14,22 @@ package jp.classmethod.aws
 	 * @author satoshi
 	 * 
 	 */
-	public class S3 extends AWSBase
+	public class ACF extends AWSBase
 	{
 		
 		public static const GET:String = "GET";
 		
 		//endpoint option
-		public static const US_EAST_1:String = "s3.amazonaws.com";
-		public static const US_WEST_1:String = "s3-us-west-1.amazonaws.com";
-		public static const EU_WEST_1:String = "s3-eu-west-1.amazonaws.com";
-		public static const AP_SOUTHEAST_1:String = "s3-ap-southeast-1.amazonaws.com";
+		public static const US_EAST_1:String = "cloudfront.amazonaws.com";
 		
-		public function S3(str:String=null) 
+		public function ACF(str:String=null) 
 		{
 			if(str != null){
 				domainEndpoint=str;
 			}else{
-				domainEndpoint=S3.US_EAST_1;
+				domainEndpoint=ACF.US_EAST_1;
 			}
-			remoteRequestURL="http://" + _domainEndpoint + endPointURLExtendsion;
+			remoteRequestURL="https://" + _domainEndpoint + endPointURLExtendsion;
 		}
 
 		public function executeRequest(action:String=null, urlVariablesArr:Array=null, requestMethod:String="GET"):void
@@ -41,7 +38,7 @@ package jp.classmethod.aws
 			
 			urlVariablesArr.push(new Parameter("HTTP-Verb",requestMethod));
 			urlVariablesArr.push(new Parameter("Date", dateString));
-			var urlVariables:URLVariables=generateSignature(urlVariablesArr, 0, requestMethod);
+			var urlVariables:URLVariables=generateSignature(urlVariablesArr, 4, requestMethod);
 			var auth:String = "AWS "+_awsAccessKey+":"+urlVariables.Signature;
 			var request:URLRequest=new URLRequest(remoteRequestURL);
 			
@@ -55,10 +52,8 @@ package jp.classmethod.aws
 				}
 			}
 
-			var host:String = "s3.amazonaws.com";
-			if(bucket != ""){
-				host = bucket+"."+host;
-			}
+			var host:String = "cloudfront.amazonaws.com";
+			var distribution:String = "/2010-11-01/distribution";
 			
 			var contentHeader:URLRequestHeader = new URLRequestHeader("Host",host);
 			request.requestHeaders.push(contentHeader);
@@ -66,6 +61,8 @@ package jp.classmethod.aws
 			request.requestHeaders.push(dateHeader);
 			var authheader:URLRequestHeader=new URLRequestHeader("Authorization",auth);
 			request.requestHeaders.push(authheader);
+			
+			request.url = "https://" + host+distribution;
 			
 			trace(ObjectUtil.toString(request));
 			

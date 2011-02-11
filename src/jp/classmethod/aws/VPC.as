@@ -42,7 +42,7 @@ package jp.classmethod.aws
 			urlVariablesArr.push(new Parameter("Version", "2010-11-15"));
 			urlVariablesArr.push(new Parameter("Action", action));
 			urlVariablesArr.push(new Parameter("AWSAccessKeyId", _awsAccessKey));
-			urlVariablesArr.push(new Parameter("Timestamp", generateRequestTimeStamp(new Date())));
+			urlVariablesArr.push(new Parameter("Timestamp", AWSDateUtil.generateRequestTimeStamp(new Date())));
 
 			var urlVariables:URLVariables=generateSignature(urlVariablesArr, signatureVersionToUse, requestMethod);
 			for each (var item:Parameter in urlVariablesArr)

@@ -38,7 +38,7 @@ package jp.classmethod.aws
 
 		public function executeRequest(action:String, urlVariablesArr:Array=null, requestMethod:String="POST"):void
 		{
-			var dateString:String = getHeaderDateString();
+			var dateString:String = AWSDateUtil.getHeaderDateString();
 			
 			if(!urlVariablesArr){
 				urlVariablesArr = new Array();
