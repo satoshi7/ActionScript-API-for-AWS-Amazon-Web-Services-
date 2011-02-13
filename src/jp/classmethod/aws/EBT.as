@@ -24,6 +24,14 @@ package jp.classmethod.aws
 	public class EBT extends AWSBase
 	{
 		public static const DESCRIBE_APPLICATIONS:String = "DescribeApplications";
+		public static const DESCRIBE_APPLICATION_VERSIONS:String = "DescribeApplicationVersions";
+		public static const DESCRIBE_CONFIGURATION_OPTIONS:String = "DescribeConfigurationOptions";
+		public static const DESCRIBE_ENVIRONMENT_RESOURCES:String = "DescribeEnvironmentResources";
+		public static const DESCRIBE_ENVIRONMENTS:String = "DescribeEnvironments";
+		public static const DESCRIBE_EVENTS:String = "DescribeEvents";
+		public static const LIST_AVAILABLE_SOLUTION_STACKS:String = "ListAvailableSolutionStacks";
+		public static const CREATE_APPLICATION:String = "CreateApplication";
+		public static const CREATE_ENVIRONMENT:String = "CreateEnvironment";
 		
 		public function EBT()
 		{
