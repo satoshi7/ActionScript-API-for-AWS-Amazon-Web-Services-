@@ -63,6 +63,14 @@ Amazon Elastic Compute Cloud
 	ec2.setAWSCredentials(AWSKey.key,AWSKey.sec);
 	ec2.addEventListener(AWSEvent.RESULT,awsHandler);
 	ec2.executeRequest(EC2.DESCRIBE_REGIONS);
+	
+	or
+	
+	var ec2:EC2 = new EC2(EC2.US_EAST_1);
+	ec2.setAWSCredentials(AWSKey.key,AWSKey.sec);
+	ec2.addEventListener(AWSEvent.RESULT,awsHandler);
+	ec2.runInstances("ami-76f0061f",1,1,null,"m1.small");
+	
 
 
 Amazon Elastic MapReduce
@@ -196,10 +204,13 @@ Amazon Route 53
 
 How to code for event handler
 	public function awsHandler(event:AWSEvent):void{
-		var data:Object = event.data;
-		//You can get XML style text.
-		ta.text += data.toString();
+		// E4X ( ECMAScript for XML ) object.
+		var data:XML = XML(event.data);
+		// wildcard namespace * and specify child element name. ex) requestId
+		ta.text += data.*::requestId;
+		ta.text += data;
 	}
+
 
 Conclusion
 -------
