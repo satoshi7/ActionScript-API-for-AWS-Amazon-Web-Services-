@@ -10,6 +10,8 @@ Anyway, try it!
 Update History
 -------
 
+2012/2/14 : Added EC2 method. Update Timestamp spec to ISO8601.
+
 2011/2/12 : Added Amazon Route 53.
 
 2011/2/11 : Added Amazon CloudFront.
