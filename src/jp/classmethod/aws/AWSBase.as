@@ -93,6 +93,10 @@ package jp.classmethod.aws
 					break;
 				
 				case 2:
+					// for EC2, CloudWatch, Import Export, Auto Scaling, Elastic Beanstalk, 
+					//     Elastic Load Balancing, Elastic MapReduce, Identity and Access Management, 
+					//     Relational Database Service, SimpleDB, Simple Notification Service,
+					//     Simple Queue Service, Virtual Private Cloud, 
 					hmacEncrypter=new HMAC(new SHA1());
 					
 					
@@ -129,6 +133,7 @@ package jp.classmethod.aws
 					
 					break;
 				case 3:
+					// for Route 53, Simple Email Service, 
 					hmacEncrypter=new HMAC(new SHA256());
 					for (var j:int=0; j < urlVariablesArr.length; j++)
 					{
@@ -140,7 +145,7 @@ package jp.classmethod.aws
 					
 					break;
 				case 4:
-					// for CloudFront
+					// for CloudFront, 
 					hmacEncrypter=new HMAC(new SHA1());
 					for (var m:int=0; m < urlVariablesArr.length; m++)
 					{

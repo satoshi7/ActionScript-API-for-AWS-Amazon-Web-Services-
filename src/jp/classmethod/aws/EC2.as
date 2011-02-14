@@ -29,6 +29,8 @@ package jp.classmethod.aws
 		public static const DESCRIBE_SPOT_PRICE_HISTORY:String = "DescribeSpotPriceHistory";
 		public static const DESCRIBE_TAGS:String = "DescribeTags";
 		public static const DESCRIBE_VOLUMES:String = "DescribeVolumes";
+		public static const RUN_INSTANCES:String = "RunInstances";
+		public static const CREATE_TAGS:String = "CreateTags";		
 		
 		//endpoint option
 		public static const US_EAST_1:String = "ec2.us-east-1.amazonaws.com";
@@ -51,7 +53,7 @@ package jp.classmethod.aws
 			if(!urlVariablesArr){
 				urlVariablesArr = new Array();
 			}
-			urlVariablesArr.push(new Parameter("Version", "2009-08-15"));
+			urlVariablesArr.push(new Parameter("Version", "2010-11-15"));
 			urlVariablesArr.push(new Parameter("Action", action));
 			urlVariablesArr.push(new Parameter("AWSAccessKeyId", _awsAccessKey));
 			urlVariablesArr.push(new Parameter("Timestamp", AWSDateUtil.generateRequestTimeStamp(new Date())));
@@ -68,6 +70,23 @@ package jp.classmethod.aws
 			urlLoader.addEventListener(Event.COMPLETE, handleRequest);
 			urlLoader.addEventListener(IOErrorEvent.IO_ERROR, handleRequestIOError);
 			urlLoader.load(request);
+		}
+		
+		public function runInstances(amiId:String,minCount:int=1,maxCount:int=1,keyName:String=null,instanceType:String=null):void{
+			var vals:Array = new Array();
+			vals.push(new Parameter("ImageId",amiId));
+			vals.push(new Parameter("MinCount",minCount.toString()));
+			vals.push(new Parameter("MaxCount",maxCount.toString()));
+			if(keyName!=null)vals.push(new Parameter("KeyName",keyName));
+			if(instanceType!=null)vals.push(new Parameter("InstanceType",instanceType));
+			this.executeRequest(EC2.RUN_INSTANCES,vals);
+		}
+		public function createTags(instanceId:String,key:String,value:String):void{
+			var vals:Array = new Array();
+			vals.push(new Parameter("ResourceId.1",instanceId));
+			vals.push(new Parameter("Tag.1.Key",key));
+			vals.push(new Parameter("Tag.1.Value",value));
+			this.executeRequest(EC2.CREATE_TAGS,vals);
 		}
 	}
 }

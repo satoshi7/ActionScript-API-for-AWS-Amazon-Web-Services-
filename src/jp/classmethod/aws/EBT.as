@@ -1,5 +1,6 @@
 package jp.classmethod.aws
 {
+	import com.adobe.utils.DateUtil;
 	import com.hurlant.crypto.hash.HMAC;
 	import com.hurlant.crypto.hash.SHA1;
 	import com.hurlant.util.Base64;
@@ -48,6 +49,7 @@ package jp.classmethod.aws
 			urlVariablesArr.push(new Parameter("Action", action));
 			urlVariablesArr.push(new Parameter("AWSAccessKeyId", _awsAccessKey));
 			urlVariablesArr.push(new Parameter("Timestamp", AWSDateUtil.generateRequestTimeStamp(new Date())));
+			//urlVariablesArr.push(new Parameter("Timestamp", DateUtil.toW3CDTF(new Date(),true)));
 
 			var urlVariables:URLVariables=generateSignature(urlVariablesArr, signatureVersionToUse, requestMethod);
 			for each (var item:Parameter in urlVariablesArr)

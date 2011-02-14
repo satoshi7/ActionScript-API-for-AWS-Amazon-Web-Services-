@@ -25,31 +25,8 @@ package jp.classmethod.aws
 			
 			var dd:Date=new Date(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate(), d.getUTCHours(), d.getUTCMinutes(), d.getUTCSeconds(), d.getUTCMilliseconds());
 			var ds:String=getSignatureDateString(dd);
-			
-			if (d.getUTCHours() < 10)
-			{
-				splitArr=ds.split("T");
-				var timeSplit:Array=splitArr[1].split(":");
-				if (timeSplit[0].length < 2)
-					ds=splitArr[0] + "T0" + splitArr[1];
-			}
-			
-			if (d.getUTCDate() < 10)
-			{
-				splitArr=ds.split("T");
-				
-				splitArr2=splitArr[0].split("-");
-				if (splitArr2[2].length < 2)
-					ds=splitArr2[0] + "-" + splitArr2[1] + "-0" + splitArr2[2] + "T" + splitArr[1];
-			}
-			if (d.getMonth() < 10)
-			{
-				splitArr=ds.split("T");
-				
-				splitArr2=splitArr[0].split("-");
-				if (splitArr2[1].length < 2)
-					ds=splitArr2[0] + "-0" + splitArr2[1] + "-" + splitArr2[2] + "T" + splitArr[1];
-			}
+
+			//trace(ds);
 			return ds;
 		}
 				
@@ -129,17 +106,22 @@ package jp.classmethod.aws
 			var ds:String = "";
 			ds += date.getFullYear().toString();
 			ds += "-";
+			if(date.getMonth()+1<10)ds+="0";
 			ds += (date.getMonth()+1).toString();
 			ds += "-";
+			if(date.getDate()<10)ds+="0";
 			ds += date.getDate().toString();
 			ds += "T";
+			if(date.getHours()<10)ds+="0";
 			ds += date.getHours().toString();
 			ds += ":";
+			if(date.getMinutes()<10)ds+="0";
 			ds += date.getMinutes().toString();
 			ds += ":";
+			if(date.getSeconds()<10)ds+="0";
 			ds += date.getSeconds().toString();
 			ds += "Z";
-			
+			//trace(ds);
 			return ds;
 		}
 		
