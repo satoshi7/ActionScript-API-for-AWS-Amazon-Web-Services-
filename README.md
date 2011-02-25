@@ -10,7 +10,9 @@ Anyway, try it!
 Update History
 -------
 
-2012/2/14 : Added EC2 method. Update Timestamp spec to ISO8601.
+2011/2/25 : Added AWS CloudFormation.
+
+2011/2/14 : Added EC2 method. Update Timestamp spec to ISO8601.
 
 2011/2/12 : Added Amazon Route 53.
 
@@ -48,6 +50,7 @@ These API's are compatible for Amazon Web Services Query API.
 * ACF - Amazon CloudFront
 * AIE - Amazon Import/Export  -- under development..
 * R53 - Amazon Route 53
+※ CFM - AWS CloudFormation
 
 How to Use
 -------
@@ -202,6 +205,13 @@ Amazon Route 53
 	r53.setAWSCredentials(AWSKey.key,AWSKey.sec);
 	r53.addEventListener(AWSEvent.RESULT,awsHandler);
 	r53.executeRequest();			
+
+
+AWS CloudFormation
+	var cfm:CFM = new CFM(CFM.US_EAST_1);
+	cfm.setAWSCredentials(AWSKey.key,AWSKey.sec);
+	cfm.addEventListener(AWSEvent.RESULT,awsHandler);
+	cfm.executeRequest(CFM.DESCRIBE_STACKS);	
 
 
 How to code for event handler
