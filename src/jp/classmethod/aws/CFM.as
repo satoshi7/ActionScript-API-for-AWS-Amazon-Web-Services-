@@ -13,9 +13,14 @@ package jp.classmethod.aws
 	 */
 	public class CFM extends AWSBase
 	{
+		public static const CREATE_STACK:String = "CreateStack";
+		public static const DELETE_STACK:String = "DeleteStack";
+		public static const DESCRIBE_STACK_EVENTS:String = "DescribeStackEvents";
 		public static const DESCRIBE_STACKS:String = "DescribeStacks";
 		public static const DESCRIBE_STACK_RESOURCES:String = "DescribeStackResources";
 		public static const GET_TEMPLATE:String = "GetTemplate";
+		public static const VALIDATE_TEMPLATE:String = "ValidateTemplate";
+		
 		
 		//endpoint option
 		public static const US_EAST_1:String = "cloudformation.us-east-1.amazonaws.com";
