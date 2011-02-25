@@ -14,6 +14,8 @@ package jp.classmethod.aws
 	public class CFM extends AWSBase
 	{
 		public static const DESCRIBE_STACKS:String = "DescribeStacks";
+		public static const DESCRIBE_STACK_RESOURCES:String = "DescribeStackResources";
+		public static const GET_TEMPLATE:String = "GetTemplate";
 		
 		//endpoint option
 		public static const US_EAST_1:String = "cloudformation.us-east-1.amazonaws.com";

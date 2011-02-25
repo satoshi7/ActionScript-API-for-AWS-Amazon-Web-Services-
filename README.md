@@ -211,7 +211,17 @@ AWS CloudFormation
 	var cfm:CFM = new CFM(CFM.US_EAST_1);
 	cfm.setAWSCredentials(AWSKey.key,AWSKey.sec);
 	cfm.addEventListener(AWSEvent.RESULT,awsHandler);
-	cfm.executeRequest(CFM.DESCRIBE_STACKS);	
+	cfm.executeRequest(CFM.DESCRIBE_STACKS);
+	
+	or
+	
+	var cfm:CFM = new CFM(CFM.US_EAST_1);
+	cfm.setAWSCredentials(AWSKey.key,AWSKey.sec);
+	cfm.addEventListener(AWSEvent.RESULT,awsHandler);
+	var vals:Array = new Array();
+	vals.push(new Parameter("StackName","test"));
+	cfm.executeRequest(CFM.DESCRIBE_STACK_RESOURCES,vals);
+	
 
 
 How to code for event handler
