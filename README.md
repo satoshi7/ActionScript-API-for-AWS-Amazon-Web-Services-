@@ -50,7 +50,7 @@ These API's are compatible for Amazon Web Services Query API.
 * ACF - Amazon CloudFront
 * AIE - Amazon Import/Export  -- under development..
 * R53 - Amazon Route 53
-※ CFM - AWS CloudFormation
+* CFM - AWS CloudFormation
 
 How to Use
 -------
