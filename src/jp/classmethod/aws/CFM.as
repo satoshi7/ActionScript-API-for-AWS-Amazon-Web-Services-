@@ -21,7 +21,6 @@ package jp.classmethod.aws
 		public static const GET_TEMPLATE:String = "GetTemplate";
 		public static const VALIDATE_TEMPLATE:String = "ValidateTemplate";
 		
-		
 		//endpoint option
 		public static const US_EAST_1:String = "cloudformation.us-east-1.amazonaws.com";
 		public static const US_WEST_1:String = "cloudformation.us-east-1.amazonaws.com";

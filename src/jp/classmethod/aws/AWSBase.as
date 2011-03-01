@@ -34,6 +34,10 @@ package jp.classmethod.aws
 		public function set domainEndpoint(name:String):void{
 			this._domainEndpoint = name;
 		}
+
+		public function get domainEndpoint():String{
+			return this._domainEndpoint;
+		}
 		
 		protected function setSignatureVersion(sigVer:int):void
 		{

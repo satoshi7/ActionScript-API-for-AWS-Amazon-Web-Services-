@@ -23,12 +23,19 @@ package jp.classmethod.aws
 	public class SDB extends AWSBase
 	{
 		public static const LIST_DOMAINS:String = "ListDomains";
+		public static const CREATE_DOMAIN:String = "CreateDomain";
+		public static const DOMAIN_METADETA:String = "DomainMetadata";
+		public static const PUT_ATTRIBUTES:String = "PutAttributes";
+		public static const GET_ATTRIBUTES:String = "GetAttributes";
+		public static const SELECT:String = "Select";
 		
 		//endpoint option
 		public static const US_EAST_1:String = "sdb.amazonaws.com";
 		public static const US_WEST_1:String = "sdb.us-west-1.amazonaws.com";
 		public static const EU_WEST_1:String = "sdb.eu-west-1.amazonaws.com";
 		public static const AP_SOUTHEAST_1:String = "sdb.ap-southeast-1.amazonaws.com";
+		
+		public var name:String;
 		
 		public function SDB(str:String=null) 
 		{
@@ -59,19 +66,9 @@ package jp.classmethod.aws
 			request.method=requestMethod;
 			
 			var urlLoader:URLLoader=new URLLoader();
-			urlLoader.addEventListener(Event.COMPLETE, handleSimpleDBRequest);
-			urlLoader.addEventListener(IOErrorEvent.IO_ERROR, handleSimpleDBRequestIOError);
+			urlLoader.addEventListener(Event.COMPLETE, handleRequest);
+			urlLoader.addEventListener(IOErrorEvent.IO_ERROR, handleRequestIOError);
 			urlLoader.load(request);
-			
-			function handleSimpleDBRequest(event:Event):void
-			{
-				trace(event.currentTarget.data);
-			}
-			
-			function handleSimpleDBRequestIOError(event:IOErrorEvent):void
-			{
-				trace(event.currentTarget.data);
-			}
 		}		
 	}
 }
