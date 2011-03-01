@@ -10,6 +10,8 @@ Anyway, try it!
 Update History
 -------
 
+2011/3/1  : Fixed bugs, SimpleDB.
+
 2011/2/25 : Added AWS CloudFormation.
 
 2011/2/14 : Added EC2 method. Update Timestamp spec to ISO8601.
