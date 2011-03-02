@@ -30,6 +30,9 @@ package jp.classmethod.aws
 		public static const US_EAST_1:String = "elasticmapreduce.us-east-1.amazonaws.com";
 		public static const US_WEST_1:String = "elasticmapreduce.us-west-1.amazonaws.com";
 		public static const EU_WEST_1:String = "elasticmapreduce.eu-west-1.amazonaws.com";
+		public static const AP_SOUTHEAST_1:String = "elasticmapreduce.ap-southeast-1.amazonaws.com";
+		public static const AP_NORTHEAST_1:String = "elasticmapreduce.ap-northeast-1.amazonaws.com";
+		
 		
 		public function EMR(str:String=null) 
 		{

@@ -25,6 +25,8 @@ package jp.classmethod.aws
 		
 		//endpoint option
 		public static const US_EAST_1:String = "email.us-east-1.amazonaws.com";
+		//public static const US_WEST_1:String = "email.us-west-1.amazonaws.com";
+		
 		
 		public function SES(str:String=null) 
 		{

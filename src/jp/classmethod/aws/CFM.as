@@ -23,9 +23,11 @@ package jp.classmethod.aws
 		
 		//endpoint option
 		public static const US_EAST_1:String = "cloudformation.us-east-1.amazonaws.com";
-		public static const US_WEST_1:String = "cloudformation.us-east-1.amazonaws.com";
-		public static const EU_WEST_1:String = "cloudformation.us-east-1.amazonaws.com";
-		public static const AP_SOUTHEAST_1:String = "cloudformation.us-east-1.amazonaws.com";
+		public static const US_WEST_1:String = "cloudformation.us-west-1.amazonaws.com";
+		public static const EU_WEST_1:String = "cloudformation.eu-west-1.amazonaws.com";
+		public static const AP_SOUTHEAST_1:String = "cloudformation.ap-southeast-1.amazonaws.com";
+		public static const AP_NORTHEAST_1:String = "cloudformation.ap-northeast-1.amazonaws.com";
+		
 		
 		public function CFM(str:String=null) 
 		{

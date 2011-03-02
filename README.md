@@ -10,6 +10,8 @@ Anyway, try it!
 Update History
 -------
 
+2011/3/2  : Added Tokyo Region, EC2, SDB, CFM, ELB, ASC, S3, RDS, SQS, SNS.
+
 2011/3/1  : Fixed bugs, SimpleDB.
 
 2011/2/25 : Added AWS CloudFormation.

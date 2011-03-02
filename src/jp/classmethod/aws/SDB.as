@@ -34,6 +34,7 @@ package jp.classmethod.aws
 		public static const US_WEST_1:String = "sdb.us-west-1.amazonaws.com";
 		public static const EU_WEST_1:String = "sdb.eu-west-1.amazonaws.com";
 		public static const AP_SOUTHEAST_1:String = "sdb.ap-southeast-1.amazonaws.com";
+		public static const AP_NORTHEAST_1:String = "sdb.ap-northeast-1.amazonaws.com";
 		
 		public var name:String;
 		

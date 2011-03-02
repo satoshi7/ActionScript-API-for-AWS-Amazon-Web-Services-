@@ -24,6 +24,8 @@ package jp.classmethod.aws
 		public static const US_WEST_1:String = "s3-us-west-1.amazonaws.com";
 		public static const EU_WEST_1:String = "s3-eu-west-1.amazonaws.com";
 		public static const AP_SOUTHEAST_1:String = "s3-ap-southeast-1.amazonaws.com";
+		public static const AP_NORTHEAST_1:String = "s3-ap-northeast-1.amazonaws.com";
+		
 		
 		public function S3(str:String=null) 
 		{

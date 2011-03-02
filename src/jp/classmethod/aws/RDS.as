@@ -29,6 +29,7 @@ package jp.classmethod.aws
 		public static const US_WEST_1:String = "rds.us-west-1.amazonaws.com";
 		public static const EU_WEST_1:String = "rds.eu-west-1.amazonaws.com";
 		public static const AP_SOUTHEAST_1:String = "rds.ap-southeast-1.amazonaws.com";
+		public static const AP_NORTHEAST_1:String = "rds.ap-northeast-1.amazonaws.com";
 		
 		public function RDS(str:String=null) 
 		{
@@ -58,19 +59,9 @@ package jp.classmethod.aws
 			request.method=requestMethod;
 
 			var urlLoader:URLLoader=new URLLoader();
-			urlLoader.addEventListener(Event.COMPLETE, handleSimpleDBRequest);
-			urlLoader.addEventListener(IOErrorEvent.IO_ERROR, handleSimpleDBRequestIOError);
+			urlLoader.addEventListener(Event.COMPLETE, handleRequest);
+			urlLoader.addEventListener(IOErrorEvent.IO_ERROR, handleRequestIOError);
 			urlLoader.load(request);
-
-			function handleSimpleDBRequest(event:Event):void
-			{
-				trace(event.currentTarget.data);
-			}
-			
-			function handleSimpleDBRequestIOError(event:IOErrorEvent):void
-			{
-				trace(event.currentTarget.data);
-			}
 
 		}
 	}

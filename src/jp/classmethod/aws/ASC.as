@@ -21,6 +21,7 @@ package jp.classmethod.aws
 		public static const US_WEST_1:String = "autoscaling.us-west-1.amazonaws.com";
 		public static const EU_WEST_1:String = "autoscaling.eu-west-1.amazonaws.com";
 		public static const AP_SOUTHEAST_1:String = "autoscaling.ap-southeast-1.amazonaws.com";
+		public static const AP_NORTHEAST_1:String = "autoscaling.ap-northeast-1.amazonaws.com";
 		
 		public function ASC(str:String=null) 
 		{

@@ -28,7 +28,8 @@ package jp.classmethod.aws
 		public static const US_EAST_1:String = "sqs.us-east-1.amazonaws.com";
 		public static const US_WEST_1:String = "sqs.us-west-1.amazonaws.com";
 		public static const EU_WEST_1:String = "sqs.eu-west-1.amazonaws.com";
-		public static const AP_SOUTHEAST_1:String = "sqs.ap-southeast-1.amazonaws.com";
+		public static const AP_SOUTHEAST_1:String = "sqs.ap-southeast-1.amazonaws.com";		
+		public static const AP_NORTHEAST_1:String = "sqs.ap-northeast-1.amazonaws.com";
 		
 		public function SQS(str:String=null) 
 		{
