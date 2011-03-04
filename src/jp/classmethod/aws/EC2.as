@@ -29,8 +29,13 @@ package jp.classmethod.aws
 		public static const DESCRIBE_SPOT_PRICE_HISTORY:String = "DescribeSpotPriceHistory";
 		public static const DESCRIBE_TAGS:String = "DescribeTags";
 		public static const DESCRIBE_VOLUMES:String = "DescribeVolumes";
+		public static const DESCRIBE_IMAGES:String = "DescribeImages";
+		public static const DESCRIBE_IMAGE_ATTRIBUTE:String = "DescribeImageAttribute";
 		public static const RUN_INSTANCES:String = "RunInstances";
-		public static const CREATE_TAGS:String = "CreateTags";		
+		public static const TERMINATE_INSTANCES:String = "TerminateInstances";
+		public static const START_INSTANCES:String = "StartInstances";
+		public static const STOP_INSTANCES:String = "StopInstances";
+		public static const CREATE_TAGS:String = "CreateTags";
 		
 		//endpoint option
 		public static const US_EAST_1:String = "ec2.us-east-1.amazonaws.com";

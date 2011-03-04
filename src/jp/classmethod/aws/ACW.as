@@ -24,9 +24,10 @@ package jp.classmethod.aws
 	{
 		
 		public static const LIST_METRICS:String = "ListMetrics";
+		public static const DESCRIBE_ALARMS:String = "DescribeAlarms";
 
 		//endpoint option
-		public static const US_EAST_1:String = "monitoring.us-east-1.amazonaws.com";
+		public static const US_EAST_1:String = "monitoring.amazonaws.com";
 		public static const US_WEST_1:String = "monitoring.us-west-1.amazonaws.com";
 		public static const EU_WEST_1:String = "monitoring.eu-west-1.amazonaws.com";
 		public static const AP_SOUTHEAST_1:String = "monitoring.ap-southeast-1.amazonaws.com";
