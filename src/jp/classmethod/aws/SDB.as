@@ -14,6 +14,9 @@ package jp.classmethod.aws
 	
 	import mx.formatters.DateFormatter;
 	import mx.rpc.soap.AbstractWebService;
+	import jp.classmethod.aws.core.AWSBase;
+	import jp.classmethod.aws.core.AWSDateUtil;
+	import jp.classmethod.aws.core.Parameter;
 
 	/**
 	 * Amazon SimpleDB 

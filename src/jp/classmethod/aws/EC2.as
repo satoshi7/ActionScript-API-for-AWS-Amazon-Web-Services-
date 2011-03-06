@@ -9,6 +9,10 @@ package jp.classmethod.aws
 	import jp.classmethod.aws.dto.Instance;
 	
 	import mx.collections.ArrayCollection;
+	import jp.classmethod.aws.core.AWSBase;
+	import jp.classmethod.aws.core.AWSDateUtil;
+	import jp.classmethod.aws.core.AWSEvent;
+	import jp.classmethod.aws.core.Parameter;
 	
 	/**
 	 * Amazon Elastic Compute Cloud 

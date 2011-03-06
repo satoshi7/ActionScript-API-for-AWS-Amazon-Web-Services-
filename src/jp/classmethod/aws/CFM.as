@@ -5,6 +5,9 @@ package jp.classmethod.aws
 	import flash.net.URLLoader;
 	import flash.net.URLRequest;
 	import flash.net.URLVariables;
+	import jp.classmethod.aws.core.AWSBase;
+	import jp.classmethod.aws.core.AWSDateUtil;
+	import jp.classmethod.aws.core.Parameter;
 	
 	/**
 	 * Amazon Elastic Compute Cloud 

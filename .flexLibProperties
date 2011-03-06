@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <flexLibProperties includeAllClasses="true" useMultiPlatformConfig="false" version="3">
   <includeClasses>
-    <classEntry path="jp.classmethod.aws.AWSBase"/>
-    <classEntry path="jp.classmethod.aws.AWSEvent"/>
+    <classEntry path="jp.classmethod.aws.core.AWSBase"/>
+    <classEntry path="jp.classmethod.aws.core.AWSEvent"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>

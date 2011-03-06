@@ -8,6 +8,9 @@ package jp.classmethod.aws
 	import flash.net.URLVariables;
 	
 	import mx.utils.ObjectUtil;
+	import jp.classmethod.aws.core.AWSBase;
+	import jp.classmethod.aws.core.AWSDateUtil;
+	import jp.classmethod.aws.core.Parameter;
 	
 	/**
 	 * Amazon Simple Storage Service
