@@ -10,6 +10,8 @@ Anyway, try it!
 Update History
 -------
 
+2011/3/6  : Added Objec style request method exec().
+
 2011/3/2  : Added Tokyo Region, EC2, SDB, CFM, ELB, ASC, S3, RDS, SQS, SNS.
 
 2011/3/1  : Fixed bugs, SimpleDB.
@@ -79,6 +81,13 @@ Amazon Elastic Compute Cloud
 	ec2.setAWSCredentials(AWSKey.key,AWSKey.sec);
 	ec2.addEventListener(AWSEvent.RESULT,awsHandler);
 	ec2.runInstances("ami-76f0061f",1,1,null,"m1.small");
+	
+	or
+	
+	var ec2:EC2 = new EC2(EC2.US_EAST_1);
+	ec2.setAWSCredentials(AWSKey.key,AWSKey.sec);
+	ec2.addEventListener(AWSEvent.RESULT,awsHandler);
+	ec2.exec({"Action":EC2.DESCRIBE_AVAILABILITY_ZONES});
 	
 
 
