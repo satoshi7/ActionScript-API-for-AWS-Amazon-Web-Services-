@@ -17,6 +17,7 @@ package jp.classmethod.aws.dto
 		
 		public function Instance(xml:XML)
 		{
+			tagName = xml.*::tagSet.*::item.*::value;
 			instanceId = xml.*::instanceId;
 			imageId = xml.*::imageId;
 			instanceType = xml.*::instanceType;
