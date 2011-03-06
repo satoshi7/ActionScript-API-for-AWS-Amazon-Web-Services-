@@ -78,6 +78,23 @@ package jp.classmethod.aws
 			urlLoader.load(request);
 		}
 		
+		public function exec(obj:Object):void{
+			var urlVariablesArr:Array=new Array();
+			var action:String;
+			
+			for(var key:String in obj){
+				var value:String = obj[key];
+				trace(key+value);
+				if(key == "Action"){
+					action = value;
+				}else{
+					urlVariablesArr.push(new Parameter(key,value));
+				}
+			}
+			
+			executeRequest(action,urlVariablesArr);
+		}
+		
 		public function runInstances(amiId:String,minCount:int=1,maxCount:int=1,keyName:String=null,instanceType:String=null):void{
 			var vals:Array = new Array();
 			vals.push(new Parameter("ImageId",amiId));
@@ -87,6 +104,7 @@ package jp.classmethod.aws
 			if(instanceType!=null)vals.push(new Parameter("InstanceType",instanceType));
 			this.executeRequest(EC2.RUN_INSTANCES,vals);
 		}
+		
 		public function createTags(instanceId:String,key:String,value:String):void{
 			var vals:Array = new Array();
 			vals.push(new Parameter("ResourceId.1",instanceId));
