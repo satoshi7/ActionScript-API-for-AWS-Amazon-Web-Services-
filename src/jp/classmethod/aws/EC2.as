@@ -6,6 +6,10 @@ package jp.classmethod.aws
 	import flash.net.URLRequest;
 	import flash.net.URLVariables;
 	
+	import jp.classmethod.aws.dto.Instance;
+	
+	import mx.collections.ArrayCollection;
+	
 	/**
 	 * Amazon Elastic Compute Cloud 
 	 * @author satoshi
@@ -95,6 +99,22 @@ package jp.classmethod.aws
 			executeRequest(action,urlVariablesArr);
 		}
 		
+		public override function handleRequest(event:Event):void{
+			var data:XML = XML(event.currentTarget.data);
+			var list:ArrayCollection = new ArrayCollection();
+			var xmlList:XMLList = data.*::reservationSet.*::item.*::instancesSet.*::item;
+			for each (var item:XML in xmlList) {
+				var instance:Instance = new Instance(item);
+				instance.region = this.domainEndpoint;
+				list.addItem(instance);
+			}
+			var ae:AWSEvent = new AWSEvent(AWSEvent.RESULT);
+			ae.data = event.currentTarget.data;
+			ae.list = list;
+			dispatchEvent(ae);
+		}
+		
+			
 		public function runInstances(amiId:String,minCount:int=1,maxCount:int=1,keyName:String=null,instanceType:String=null):void{
 			var vals:Array = new Array();
 			vals.push(new Parameter("ImageId",amiId));
