@@ -14,11 +14,13 @@ package jp.classmethod.aws
 	import flash.net.URLVariables;
 	import flash.utils.ByteArray;
 	
-	import mx.formatters.DateFormatter;
-	import mx.utils.ObjectUtil;
 	import jp.classmethod.aws.core.AWSBase;
 	import jp.classmethod.aws.core.AWSDateUtil;
+	import jp.classmethod.aws.core.AWSEvent;
 	import jp.classmethod.aws.core.Parameter;
+	import jp.classmethod.aws.dto.Environment;
+	
+	import mx.collections.ArrayCollection;
 
 	/**
 	 * AWS Elastic Beanstalk 
@@ -52,7 +54,6 @@ package jp.classmethod.aws
 			urlVariablesArr.push(new Parameter("Action", action));
 			urlVariablesArr.push(new Parameter("AWSAccessKeyId", _awsAccessKey));
 			urlVariablesArr.push(new Parameter("Timestamp", AWSDateUtil.generateRequestTimeStamp(new Date())));
-			//urlVariablesArr.push(new Parameter("Timestamp", DateUtil.toW3CDTF(new Date(),true)));
 
 			var urlVariables:URLVariables=generateSignature(urlVariablesArr, signatureVersionToUse, requestMethod);
 			for each (var item:Parameter in urlVariablesArr)
@@ -66,7 +67,26 @@ package jp.classmethod.aws
 			urlLoader.addEventListener(Event.COMPLETE, handleRequest);
 			urlLoader.addEventListener(IOErrorEvent.IO_ERROR, handleRequestIOError);
 			urlLoader.load(request);
-
 		}
+		
+		public override function handleRequest(event:Event):void{
+			var data:XML = XML(event.currentTarget.data);
+			var list:ArrayCollection = new ArrayCollection();
+			
+			if(action == "DescribeEnvironments"){
+				var xmlList:XMLList = data.*::DescribeEnvironmentsResult.*::Environments.*::member;
+				for each (var item:XML in xmlList) {
+					var environment:Environment = new Environment(item);
+					environment.region = this.domainEndpoint;
+					list.addItem(environment);
+				}
+			}
+			
+			var ae:AWSEvent = new AWSEvent(AWSEvent.RESULT);
+			ae.data = event.currentTarget.data;
+			ae.list = list;
+			dispatchEvent(ae);
+		}
+
 	}
 }

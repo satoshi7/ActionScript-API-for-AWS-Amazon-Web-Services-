@@ -26,6 +26,9 @@ package jp.classmethod.aws.core
 		protected var _domainEndpoint:String="";
 		protected static var signatureVersionToUse:int=2;
 		
+		protected var action:String;
+
+		
 		public function AWSBase()
 		{
 			remoteRequestURL=protocol + _domainEndpoint + endPointURLExtendsion;

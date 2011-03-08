@@ -7,13 +7,22 @@ package jp.classmethod.aws.dto
 		public var instanceId:String;
 		public var imageId:String;
 		public var instanceType:String;
-		public var instanceName:String;
+		public var instanceState:String;
+		public var privateDnsName:String;
 		public var dnsName:String;
 		public var launchTime:String;
 		public var ipAddress:String;
 		public var rootDeviceType:String;
 		public var status:String;
 		public var availabilityZone:String;
+		public var kernelId:String;
+		public var monitoring:String;
+		public var privateIpAddress:String;
+		public var architecture:String;
+		public var rootDeviceName:String;
+		public var virtualizationType:String;
+		public var clientToken:String;
+		public var hypervisor:String;
 		
 		public function Instance(xml:XML)
 		{
@@ -21,13 +30,22 @@ package jp.classmethod.aws.dto
 			instanceId = xml.*::instanceId;
 			imageId = xml.*::imageId;
 			instanceType = xml.*::instanceType;
-			instanceName = xml.*::instanceName;
+			instanceState = xml.*::instanceState.*::name;
+			privateDnsName = xml.*::privateDnsName;
 			dnsName = xml.*::dnsName;
 			launchTime = xml.*::launchTime;
 			ipAddress = xml.*::ipAddress;
 			rootDeviceType = xml.*::rootDeviceType;
 			status = xml.*::instanceState.*::name;
 			availabilityZone = xml.*::placement.*::availabilityZone;
+			kernelId = xml.*::kernelId;
+			monitoring = xml.*::monitoring.*::state;
+			privateIpAddress = xml.*::privateIpAddress;
+			architecture = xml.*::architecture;
+			rootDeviceName = xml.*::rootDeviceName;
+			virtualizationType = xml.*::virtualizationType;
+			clientToken = xml.*::clientToken;
+			hypervisor = xml.*::hypervisor;
 		}
 	}
 }

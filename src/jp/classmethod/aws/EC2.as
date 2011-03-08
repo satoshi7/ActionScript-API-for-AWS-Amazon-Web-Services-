@@ -51,7 +51,7 @@ package jp.classmethod.aws
 		public static const EU_WEST_1:String = "ec2.eu-west-1.amazonaws.com";
 		public static const AP_SOUTHEAST_1:String = "ec2.ap-southeast-1.amazonaws.com";
 		public static const AP_NORTHEAST_1:String = "ec2.ap-northeast-1.amazonaws.com";
-		
+				
 		public function EC2(str:String=null) 
 		{
 			if(str != null){
@@ -64,6 +64,7 @@ package jp.classmethod.aws
 
 		public function executeRequest(action:String, urlVariablesArr:Array=null, requestMethod:String="POST"):void
 		{
+			this.action = action;
 			if(!urlVariablesArr){
 				urlVariablesArr = new Array();
 			}
@@ -106,18 +107,21 @@ package jp.classmethod.aws
 		public override function handleRequest(event:Event):void{
 			var data:XML = XML(event.currentTarget.data);
 			var list:ArrayCollection = new ArrayCollection();
-			var xmlList:XMLList = data.*::reservationSet.*::item.*::instancesSet.*::item;
-			for each (var item:XML in xmlList) {
-				var instance:Instance = new Instance(item);
-				instance.region = this.domainEndpoint;
-				list.addItem(instance);
+			
+			if(action == "DescribeInstances"){
+				var xmlList:XMLList = data.*::reservationSet.*::item.*::instancesSet.*::item;
+				for each (var item:XML in xmlList) {
+					var instance:Instance = new Instance(item);
+					instance.region = this.domainEndpoint;
+					list.addItem(instance);
+				}
 			}
+			
 			var ae:AWSEvent = new AWSEvent(AWSEvent.RESULT);
 			ae.data = event.currentTarget.data;
 			ae.list = list;
 			dispatchEvent(ae);
 		}
-		
 			
 		public function runInstances(amiId:String,minCount:int=1,maxCount:int=1,keyName:String=null,instanceType:String=null):void{
 			var vals:Array = new Array();
