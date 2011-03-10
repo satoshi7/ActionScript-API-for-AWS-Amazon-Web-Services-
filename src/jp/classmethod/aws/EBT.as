@@ -18,7 +18,9 @@ package jp.classmethod.aws
 	import jp.classmethod.aws.core.AWSDateUtil;
 	import jp.classmethod.aws.core.AWSEvent;
 	import jp.classmethod.aws.core.Parameter;
+	import jp.classmethod.aws.dto.Application;
 	import jp.classmethod.aws.dto.Environment;
+	import jp.classmethod.aws.dto.SolutionStack;
 	
 	import mx.collections.ArrayCollection;
 
@@ -47,6 +49,7 @@ package jp.classmethod.aws
 
 		public function executeRequest(action:String, urlVariablesArr:Array=null, requestMethod:String="POST"):void
 		{
+			this.action = action;
 			if(!urlVariablesArr){
 				urlVariablesArr = new Array();
 			}
@@ -72,16 +75,52 @@ package jp.classmethod.aws
 		public override function handleRequest(event:Event):void{
 			var data:XML = XML(event.currentTarget.data);
 			var list:ArrayCollection = new ArrayCollection();
+			var xmlList:XMLList;
 			
-			if(action == "DescribeEnvironments"){
-				var xmlList:XMLList = data.*::DescribeEnvironmentsResult.*::Environments.*::member;
-				for each (var item:XML in xmlList) {
-					var environment:Environment = new Environment(item);
-					environment.region = this.domainEndpoint;
-					list.addItem(environment);
+			switch(action)
+			{
+				case DESCRIBE_ENVIRONMENTS:
+				{
+					xmlList = data.*::DescribeEnvironmentsResult.*::Environments.*::member;
+					for each (var item:XML in xmlList) {
+						var environment:Environment = new Environment(item);
+						environment.region = this.domainEndpoint;
+						list.addItem(environment);
+					}
+					break;
 				}
+				case DESCRIBE_APPLICATIONS:
+				{
+					xmlList = data.*::DescribeApplicationsResult.*::Applications.*::member;
+					for each (var item2:XML in xmlList) {
+						var app:Application = new Application(item2);
+						app.region = this.domainEndpoint;
+						list.addItem(app);
+					}
+					break;
+
+				}
+				case LIST_AVAILABLE_SOLUTION_STACKS:
+				{
+					xmlList = data.*::ListAvailableSolutionStacksResult.*::SolutionStacks.*::member;
+					for each (var item3:XML in xmlList) {
+						var sol:SolutionStack = new SolutionStack(item3);
+						sol.region = this.domainEndpoint;
+						list.addItem(sol);
+					}
+					break;
+					
+				}
+					
+				default:
+				{
+					trace("default");
+					break;
+				}
+				trace("handleRequest");
+
 			}
-			
+
 			var ae:AWSEvent = new AWSEvent(AWSEvent.RESULT);
 			ae.data = event.currentTarget.data;
 			ae.list = list;

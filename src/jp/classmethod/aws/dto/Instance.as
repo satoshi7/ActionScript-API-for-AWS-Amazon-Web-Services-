@@ -48,4 +48,5 @@ package jp.classmethod.aws.dto
 			hypervisor = xml.*::hypervisor;
 		}
 	}
+	
 }

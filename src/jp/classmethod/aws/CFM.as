@@ -31,7 +31,6 @@ package jp.classmethod.aws
 		public static const AP_SOUTHEAST_1:String = "cloudformation.ap-southeast-1.amazonaws.com";
 		public static const AP_NORTHEAST_1:String = "cloudformation.ap-northeast-1.amazonaws.com";
 		
-		
 		public function CFM(str:String=null) 
 		{
 			if(str != null){
