@@ -278,6 +278,7 @@ AWS Security Token Service
     
 
 How to code for event handler
+
     public function awsHandler(event:AWSEvent):void{
         // E4X ( ECMAScript for XML ) object.
         var data:XML = XML(event.data);
