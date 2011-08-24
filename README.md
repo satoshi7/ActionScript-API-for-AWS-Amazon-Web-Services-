@@ -74,6 +74,7 @@ You can develop the application by a really little code.
 
     
 Amazon Elastic Compute Cloud
+
     var ec2:EC2 = new EC2(EC2.US_EAST_1);
     ec2.setAWSCredentials(AWSKey.key,AWSKey.sec);
     ec2.addEventListener(AWSEvent.RESULT,awsHandler);
@@ -96,6 +97,7 @@ Amazon Elastic Compute Cloud
 
 
 Amazon Elastic MapReduce
+
     var emr:EMR = new EMR(EMR.US_EAST_1);
     emr.setAWSCredentials(AWSKey.key,AWSKey.sec);
     emr.addEventListener(AWSEvent.RESULT,awsHandler);
@@ -103,6 +105,7 @@ Amazon Elastic MapReduce
 
 
 Amazon Relational Database Service
+
     var rds:RDS = new RDS(RDS.US_EAST_1);
     rds.setAWSCredentials(AWSKey.key,AWSKey.sec);
     rds.addEventListener(AWSEvent.RESULT,awsHandler);
