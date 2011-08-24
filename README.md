@@ -10,6 +10,8 @@ Anyway, try it!
 Update History
 -------
 
+2011/8/24 : Added Amazon ElastiCache, AWS Security Token Service.
+
 2011/3/6  : Added Objec style request method exec().
 
 2011/3/2  : Added Tokyo Region, EC2, SDB, CFM, ELB, ASC, S3, RDS, SQS, SNS.
@@ -57,6 +59,8 @@ These API's are compatible for Amazon Web Services Query API.
 * AIE - Amazon Import/Export  -- under development..
 * R53 - Amazon Route 53
 * CFM - AWS CloudFormation
+* AEC - Amazon ElastiCache
+* STS - AWS Security Token Service
 
 How to Use
 -------
@@ -235,6 +239,23 @@ AWS CloudFormation
 	vals.push(new Parameter("StackName","test"));
 	cfm.executeRequest(CFM.DESCRIBE_STACK_RESOURCES,vals);
 	
+
+Amazon ElastiCache
+	var sts:STS = new STS();
+	sts.setAWSCredentials(AWSKey.key,AWSKey.sec);
+	var array:Array = new Array();
+	array.push(new Parameter("Name","Bob"));
+	sts.addEventListener(AWSEvent.RESULT,resultHandler);
+	sts.executeRequest(STS.GET_FEDERATION_TOKEN,array);
+
+
+AWS Security Token Service
+	var aec:AEC = new AEC();
+	aec.setAWSCredentials(AWSKey.key,AWSKey.sec);
+	aec.addEventListener(AWSEvent.RESULT,resultHandler);
+	aec.executeRequest(AEC.DESCRIBE_CACHE_SECURITY_GROUPS);
+
+
 
 
 How to code for event handler
