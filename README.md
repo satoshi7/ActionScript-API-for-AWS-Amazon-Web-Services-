@@ -113,6 +113,7 @@ Amazon Relational Database Service
 
 
 Amazon Simple Notification Service
+
     var sns:SNS = new SNS(SNS.US_EAST_1);
     sns.setAWSCredentials(AWSKey.key,AWSKey.sec);
     sns.addEventListener(AWSEvent.RESULT,awsHandler);
@@ -120,6 +121,7 @@ Amazon Simple Notification Service
 
                     
 Amazon SimpleDB
+
     var sdb:SDB = new SDB(SDB.US_EAST_1);
     sdb.setAWSCredentials(AWSKey.key,AWSKey.sec);
     sdb.addEventListener(AWSEvent.RESULT,awsHandler);
@@ -127,6 +129,7 @@ Amazon SimpleDB
 
 
 Amazon Simple Queue Service
+
     var sqs:SQS = new SQS(SQS.US_EAST_1);
     sqs.setAWSCredentials(AWSKey.key,AWSKey.sec);
     sqs.addEventListener(AWSEvent.RESULT,awsHandler);
@@ -134,6 +137,7 @@ Amazon Simple Queue Service
 
 
 Amazon CloudWatch
+
     var acw:ACW = new ACW(ACW.US_EAST_1);
     acw.setAWSCredentials(AWSKey.key,AWSKey.sec);
     acw.addEventListener(AWSEvent.RESULT,awsHandler);
@@ -141,6 +145,7 @@ Amazon CloudWatch
 
     
 AWS Identity and Access Management
+
     var iam:IAM = new IAM(IAM.US_EAST_1);
     iam.setAWSCredentials(AWSKey.key,AWSKey.sec);
     iam.addEventListener(AWSEvent.RESULT,awsHandler);
@@ -148,6 +153,7 @@ AWS Identity and Access Management
 
 
 AWS Elastic Beanstalk 
+
     var ebt:EBT = new EBT(EBT.US_EAST_1);
     ebt.setAWSCredentials(AWSKey.key,AWSKey.sec);
     ebt.addEventListener(AWSEvent.RESULT,awsHandler);
@@ -155,6 +161,7 @@ AWS Elastic Beanstalk
 
 
 Amazon Simple Email Serivce
+
     var ses:SES = new SES(SES.US_EAST_1);
     ses.setAWSCredentials(AWSKey.key,AWSKey.sec);
     ses.addEventListener(AWSEvent.RESULT,awsHandler);
@@ -176,6 +183,7 @@ Amazon Simple Email Serivce
     
 
 Amazon Elastic Load Balancing
+
     var elb:ELB = new ELB(ELB.EU_WEST_1);
     elb.setAWSCredentials(AWSKey.key,AWSKey.sec);
     elb.addEventListener(AWSEvent.RESULT,awsHandler);
@@ -183,6 +191,7 @@ Amazon Elastic Load Balancing
 
 
 Auto Scaling 
+
     var asc:ASC = new ASC(ASC.EU_WEST_1);
     asc.setAWSCredentials(AWSKey.key,AWSKey.sec);
     asc.addEventListener(AWSEvent.RESULT,awsHandler);
@@ -190,6 +199,7 @@ Auto Scaling
 
 
 Amazon Simple Storage Service
+
     var s3:S3 = new S3(S3.US_EAST_1);
     s3.setAWSCredentials(AWSKey.key,AWSKey.sec);
     s3.addEventListener(AWSEvent.RESULT,awsHandler);
@@ -207,6 +217,7 @@ Amazon Simple Storage Service
     
 
 Amazon Virtual Private Cloud
+
     var vpc:VPC = new VPC(VPC.US_EAST_1);
     vpc.setAWSCredentials(AWSKey.key,AWSKey.sec);
     vpc.addEventListener(AWSEvent.RESULT,awsHandler);
@@ -214,6 +225,7 @@ Amazon Virtual Private Cloud
 
 
 Amazon CloudFront
+
     var vpc:ACF = new ACF();
     vpc.setAWSCredentials(AWSKey.key,AWSKey.sec);
     vpc.addEventListener(AWSEvent.RESULT,awsHandler);
@@ -221,6 +233,7 @@ Amazon CloudFront
     
     
 Amazon Route 53    
+
     var r53:R53 = new R53();
     r53.setAWSCredentials(AWSKey.key,AWSKey.sec);
     r53.addEventListener(AWSEvent.RESULT,awsHandler);
@@ -228,6 +241,7 @@ Amazon Route 53
 
 
 AWS CloudFormation
+
     var cfm:CFM = new CFM(CFM.US_EAST_1);
     cfm.setAWSCredentials(AWSKey.key,AWSKey.sec);
     cfm.addEventListener(AWSEvent.RESULT,awsHandler);
@@ -244,6 +258,7 @@ AWS CloudFormation
         
     
 Amazon ElastiCache
+
     var sts:STS = new STS();
     sts.setAWSCredentials(AWSKey.key,AWSKey.sec);
     var array:Array = new Array();
@@ -253,6 +268,7 @@ Amazon ElastiCache
     
     
 AWS Security Token Service
+
     var aec:AEC = new AEC();
     aec.setAWSCredentials(AWSKey.key,AWSKey.sec);
     aec.addEventListener(AWSEvent.RESULT,resultHandler);
