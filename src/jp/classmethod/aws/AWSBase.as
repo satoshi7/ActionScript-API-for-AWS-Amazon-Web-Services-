@@ -11,6 +11,8 @@ package jp.classmethod.aws
 	import flash.net.URLVariables;
 	import flash.utils.ByteArray;
 	
+	import jp.classmethod.aws.core.*;
+	
 	/**
 	 * base class
 	 * @author satoshi

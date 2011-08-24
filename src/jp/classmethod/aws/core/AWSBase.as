@@ -61,6 +61,8 @@ package jp.classmethod.aws.core
 			var strToSign:String="";
 			
 			var hmacEncrypter:HMAC=null;
+			var accessKeyStr:String="";
+
 			switch (sigVersion)
 			{
 				
@@ -103,12 +105,10 @@ package jp.classmethod.aws.core
 					// for EC2, CloudWatch, Import Export, Auto Scaling, Elastic Beanstalk, 
 					//     Elastic Load Balancing, Elastic MapReduce, Identity and Access Management, 
 					//     Relational Database Service, SimpleDB, Simple Notification Service,
-					//     Simple Queue Service, Virtual Private Cloud, 
+					//     Simple Queue Service, Virtual Private Cloud, ElastiCache
 					hmacEncrypter=new HMAC(new SHA1());
 					
-					
-					var accessKeyStr:String="";
-					urlVariablesArr.push(new Parameter("SignatureVersion", sigVersion.toString()));
+					urlVariablesArr.push(new Parameter("SignatureVersion", "2"));
 					urlVariablesArr.push(new Parameter("SignatureMethod", "HmacSHA1"));
 					
 					urlVariablesArr.sortOn("key", Array.CASEINSENSITIVE);

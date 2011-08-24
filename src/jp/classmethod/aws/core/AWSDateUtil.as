@@ -124,7 +124,7 @@ package jp.classmethod.aws.core
 			//trace(ds);
 			return ds;
 		}
-		
+
 	}
 }
 
