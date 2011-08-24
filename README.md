@@ -72,7 +72,7 @@ How to Development
 -------
 You can develop the application by a really little code. 
 
-
+	
 Amazon Elastic Compute Cloud
 	var ec2:EC2 = new EC2(EC2.US_EAST_1);
 	ec2.setAWSCredentials(AWSKey.key,AWSKey.sec);
@@ -238,8 +238,8 @@ AWS CloudFormation
 	var vals:Array = new Array();
 	vals.push(new Parameter("StackName","test"));
 	cfm.executeRequest(CFM.DESCRIBE_STACK_RESOURCES,vals);
+		
 	
-
 Amazon ElastiCache
 	var sts:STS = new STS();
 	sts.setAWSCredentials(AWSKey.key,AWSKey.sec);
@@ -247,16 +247,16 @@ Amazon ElastiCache
 	array.push(new Parameter("Name","Bob"));
 	sts.addEventListener(AWSEvent.RESULT,resultHandler);
 	sts.executeRequest(STS.GET_FEDERATION_TOKEN,array);
-
-
+	
+	
 AWS Security Token Service
 	var aec:AEC = new AEC();
 	aec.setAWSCredentials(AWSKey.key,AWSKey.sec);
 	aec.addEventListener(AWSEvent.RESULT,resultHandler);
 	aec.executeRequest(AEC.DESCRIBE_CACHE_SECURITY_GROUPS);
-
-
-
+	
+	
+	
 
 How to code for event handler
 	public function awsHandler(event:AWSEvent):void{
