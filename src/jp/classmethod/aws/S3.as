@@ -43,35 +43,41 @@ package jp.classmethod.aws
 		public function executeRequest(action:String=null, urlVariablesArr:Array=null, requestMethod:String="GET"):void
 		{
 			var dateString:String = AWSDateUtil.getHeaderDateString();
-			
-			urlVariablesArr.push(new Parameter("HTTP-Verb",requestMethod));
-			urlVariablesArr.push(new Parameter("Date", dateString));
-			var urlVariables:URLVariables=generateSignature(urlVariablesArr, 0, requestMethod);
-			var auth:String = "AWS "+_awsAccessKey+":"+urlVariables.Signature;
-			var request:URLRequest=new URLRequest(remoteRequestURL);
-			
-			request.method=requestMethod;
-			
-			var bucket:String = "";
+			var bucket:String = "", resources:String = "";
 			for (var j:int=0; j < urlVariablesArr.length; j++)
 			{
 				if (urlVariablesArr[j].key == "Bucket"){
 					bucket = urlVariablesArr[j].value;
 				}
+				if (urlVariablesArr[j].key == "Resources"){
+					resources = urlVariablesArr[j].value;
+				}
 			}
-
 			var host:String = "s3.amazonaws.com";
 			if(bucket != ""){
 				host = bucket+"."+host;
 			}
+
+			urlVariablesArr.push(new Parameter("HTTP-Verb",requestMethod));
+			urlVariablesArr.push(new Parameter("Date", dateString));
+			if (requestMethod == "PUT" || requestMethod == "POST") urlVariablesArr.push(new Parameter("Content-Type", "multipart/form-data"));
+			var urlVariables:URLVariables=generateSignature(urlVariablesArr, 0, requestMethod);
+			var auth:String = "AWS "+_awsAccessKey+":"+urlVariables.Signature;
+			var request:URLRequest=new URLRequest(remoteRequestURL+resources);
 			
+			request.method=requestMethod;
+
 			var contentHeader:URLRequestHeader = new URLRequestHeader("Host",host);
 			request.requestHeaders.push(contentHeader);
 			var dateHeader:URLRequestHeader = new URLRequestHeader("Date",dateString);
 			request.requestHeaders.push(dateHeader);
 			var authheader:URLRequestHeader=new URLRequestHeader("Authorization",auth);
 			request.requestHeaders.push(authheader);
+			var contentType:URLRequestHeader=new URLRequestHeader("Content-Type","multipart/form-data");
+			if (requestMethod == "PUT" || requestMethod == "POST") request.requestHeaders.push(contentType);
 			
+			if (action) request.data = action
+
 			trace(ObjectUtil.toString(request));
 			
 			var urlLoader:URLLoader=new URLLoader();

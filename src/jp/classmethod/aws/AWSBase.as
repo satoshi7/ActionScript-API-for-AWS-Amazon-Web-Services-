@@ -71,6 +71,7 @@ package jp.classmethod.aws
 					var httpVerb:String = "";
 					var bucket:String = "";
 					var amzHeaders:String = "";
+					var contentType:String = "";
 					
 					for (var k:int=0; k < urlVariablesArr.length; k++)
 					{
@@ -86,12 +87,15 @@ package jp.classmethod.aws
 						if (urlVariablesArr[k].key == "Bucket"){
 							bucket = urlVariablesArr[k].value;
 						}
+						if (urlVariablesArr[k].key == "Content-Type"){
+							contentType = urlVariablesArr[k].value;
+						}
 					}
 					strToSign += httpVerb+"\n";
 					strToSign += "\n";
-					strToSign += "\n";
+					strToSign += contentType+"\n";
 					strToSign += dateStr+"\n";
-					strToSign += "/"+bucket+resourcesStr;
+					strToSign += "/"+bucket+'/'+resourcesStr;
 					requestData.writeUTFBytes(strToSign);
 					break;
 				
